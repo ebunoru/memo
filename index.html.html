@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+<title>トリガーメモ</title>
+<meta name="description" content="想起で法律の規範を定着させる復習アプリ">
+<meta name="theme-color" content="#34507a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="トリガーメモ">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+html,body{margin:0;padding:0;background:#f0e8d6;}
+      @import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Shippori+Mincho:wght@600;700&display=swap');
+
+      * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+      .tm-root {
+        --paper: #f6f1e4; --paper-2: #fbf8ef; --ink: #2b2a33; --ink-soft: #5a5750;
+        --rule: #d8cdb3; --red: #b5402f; --red-soft: #c96a56; --blue: #2f4a6b;
+        --gold: #b8893b; --shadow: rgba(60,45,20,0.18);
+        font-family: 'Zen Kaku Gothic New', sans-serif; color: var(--ink);
+        background: radial-gradient(circle at 20% 10%, #efe7d3 0%, transparent 55%),
+          radial-gradient(circle at 90% 90%, #efe6cf 0%, transparent 50%), #f0e8d6;
+        min-height: 100vh; width: 100%; line-height: 1.7; -webkit-font-smoothing: antialiased;
+      }
+      .tm-center { display:flex; align-items:center; justify-content:center; min-height:100vh; }
+      .tm-spinner { width:34px; height:34px; border-radius:50%; border:3px solid var(--rule); border-top-color: var(--red); animation: tm-spin .8s linear infinite; }
+      @keyframes tm-spin { to { transform: rotate(360deg); } }
+      .tm-page { max-width: 640px; margin: 0 auto; padding: 22px 18px 60px; }
+
+      .tm-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 20px; }
+      .tm-logo { font-family:'Klee One',cursive; font-weight:600; font-size:30px; margin:0; letter-spacing:.02em; }
+      .tm-sub { margin:2px 0 0; font-size:13px; color: var(--ink-soft); }
+      .tm-streak { text-align:center; background: var(--ink); color: var(--paper-2); border-radius:14px; padding:8px 14px; line-height:1.1; box-shadow: 0 4px 12px var(--shadow); }
+      .tm-streak-num { font-size:22px; font-weight:700; font-family:'Klee One',cursive; display:block; }
+      .tm-streak-label { font-size:10px; opacity:.8; letter-spacing:.1em; }
+
+      .tm-due-card { background: linear-gradient(155deg,#34507a,#233a5c); color:#f6f1e4; border-radius:20px; padding:22px 22px 24px; box-shadow:0 10px 26px rgba(35,58,92,.35); position:relative; overflow:hidden; margin-bottom:16px; }
+      .tm-due-card::after { content:''; position:absolute; right:-30px; top:-30px; width:140px; height:140px; background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%); }
+      .tm-due-kicker { font-size:12px; letter-spacing:.15em; opacity:.85; }
+      .tm-due-count { font-size:24px; margin:4px 0 16px; font-weight:500; }
+      .tm-due-count strong { font-size:34px; font-family:'Klee One',cursive; color:#ffd98a; margin-right:4px; }
+      .tm-due-empty { font-size:14px; opacity:.9; margin:6px 0 0; }
+
+      .tm-btn-primary { width:100%; border:none; cursor:pointer; background: var(--red); color:#fff7ec; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:16px; padding:15px; border-radius:14px; letter-spacing:.03em; box-shadow:0 6px 16px rgba(181,64,47,.4); transition: transform .12s ease, box-shadow .12s ease; }
+      .tm-btn-primary:active { transform: translateY(2px); box-shadow:0 3px 8px rgba(181,64,47,.4); }
+      .tm-mt { margin-top:18px; }
+
+      .tm-stats { display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin-bottom:26px; }
+      .tm-stat { background: var(--paper-2); border:1px solid var(--rule); border-radius:14px; padding:12px 8px; text-align:center; box-shadow:0 2px 6px rgba(60,45,20,.06); }
+      .tm-stat-val { font-size:22px; font-weight:700; font-family:'Klee One',cursive; color: var(--blue); }
+      .tm-stat-lab { font-size:11px; color: var(--ink-soft); margin-top:2px; }
+
+      .tm-list-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+      .tm-list-head h3 { font-family:'Shippori Mincho',serif; font-size:18px; margin:0; border-left:4px solid var(--red); padding-left:10px; }
+      .tm-add { background:none; border:1.5px solid var(--ink); color: var(--ink); border-radius:999px; padding:6px 14px; font-size:13px; font-weight:500; cursor:pointer; font-family:inherit; }
+      .tm-add:active { background: var(--ink); color: var(--paper); }
+
+      .tm-empty { text-align:center; padding:30px 16px; color: var(--ink-soft); }
+      .tm-empty-sub { font-size:13px; }
+
+      .tm-cards { display:flex; flex-direction:column; gap:16px; }
+      .tm-memo { position:relative; background: var(--paper-2); border:1px solid var(--rule); border-radius:4px 4px 10px 10px; padding:22px 16px 14px; padding-right:64px; box-shadow:0 4px 14px var(--shadow); background-image: repeating-linear-gradient(var(--paper-2) 0 30px, var(--rule) 30px 31px); background-position:0 8px; }
+      .tm-memo.is-due { box-shadow:0 4px 14px var(--shadow), 0 0 0 2px var(--red-soft); }
+      .tm-memo-body { cursor:pointer; }
+      .tm-spiral { position:absolute; top:-9px; left:14px; right:14px; display:flex; justify-content:space-between; }
+      .tm-ring { width:13px; height:18px; border:2.5px solid #9a937f; border-radius:50%; border-bottom-color:transparent; border-right-color:#8a836f; background: linear-gradient(#cfc6ad,#b3aa90); transform: rotate(8deg); }
+      .tm-spiral-wide { left:20px; right:20px; top:-10px; }
+      .tm-memo-meta { display:flex; align-items:center; gap:8px; margin-bottom:4px; flex-wrap:wrap; }
+      .tm-chip { background: var(--blue); color:#f3eddd; font-size:11px; font-weight:500; padding:2px 9px; border-radius:999px; letter-spacing:.04em; }
+      .tm-chip-center { display:inline-block; margin:0 auto 4px; }
+      .tm-when { font-size:11.5px; color: var(--ink-soft); }
+      .tm-when.due { color: var(--red); font-weight:700; }
+      .tm-memo-title { font-family:'Klee One',cursive; font-weight:600; font-size:22px; margin:2px 0 8px; text-decoration:underline; text-decoration-color: var(--gold); text-underline-offset:4px; text-decoration-thickness:2px; }
+      .tm-q-preview { margin:0; padding-left:18px; }
+      .tm-q-preview li { font-size:14px; color: var(--ink-soft); margin-bottom:2px; }
+      .tm-q-preview li::marker { color: var(--red); }
+      .tm-more { list-style:none; margin-left:-18px; font-size:12px!important; font-style:italic; }
+      .tm-level { display:flex; gap:5px; margin-top:10px; }
+      .tm-dot { width:7px; height:7px; border-radius:50%; background: var(--rule); }
+      .tm-dot.on { background: var(--gold); }
+      .tm-memo-recall { position:absolute; right:12px; top:50%; transform:translateY(-50%); background: var(--red); color:#fff7ec; border:none; cursor:pointer; writing-mode: vertical-rl; padding:10px 7px; border-radius:8px; font-size:14px; font-weight:700; letter-spacing:.15em; font-family:inherit; box-shadow:0 3px 8px rgba(181,64,47,.35); }
+      .tm-memo-recall:active { transform: translateY(-50%) scale(.95); }
+      .tm-footnote { margin-top:28px; font-size:12px; color: var(--ink-soft); text-align:center; line-height:1.8; padding:0 10px; }
+
+      .tm-editor-head, .tm-recall-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; gap:12px; }
+      .tm-editor-title { font-family:'Shippori Mincho',serif; font-size:16px; font-weight:600; }
+      .tm-link { background:none; border:none; color: var(--blue); font-size:14px; cursor:pointer; font-family:inherit; font-weight:500; }
+      .tm-save { background: var(--ink); color: var(--paper-2); border:none; cursor:pointer; padding:7px 18px; border-radius:999px; font-size:14px; font-weight:700; font-family:inherit; }
+      .tm-save:disabled { opacity:.35; }
+      .tm-save-full { width:100%; padding:13px; border-radius:12px; margin-top:8px; }
+
+      .tm-form { display:flex; flex-direction:column; gap:16px; }
+      .tm-field { display:flex; flex-direction:column; gap:6px; }
+      .tm-label { font-size:13px; font-weight:700; color: var(--ink-soft); }
+      .tm-input, .tm-textarea { width:100%; font-family:inherit; font-size:15px; color: var(--ink); background: var(--paper-2); border:1px solid var(--rule); border-radius:10px; padding:12px; outline:none; line-height:1.7; }
+      .tm-input:focus, .tm-textarea:focus { border-color: var(--blue); box-shadow:0 0 0 3px rgba(47,74,107,.12); }
+      .tm-input-title { font-family:'Klee One',cursive; font-size:19px; font-weight:600; }
+      .tm-textarea { resize: vertical; }
+      .tm-bulk { background: linear-gradient(160deg,#fffdf6,#f6efdc); border:1.5px solid var(--gold); border-radius:14px; padding:16px; box-shadow:0 4px 14px rgba(184,137,59,.18); }
+      .tm-bulk-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+      .tm-bulk-title { font-family:'Shippori Mincho',serif; font-weight:700; font-size:15px; color: var(--ink); }
+      .tm-bulk-desc { font-size:12.5px; color: var(--ink-soft); margin:0 0 10px; line-height:1.7; }
+      .tm-bulk-desc code { background:#f1e4c2; padding:1px 5px; border-radius:5px; font-size:11.5px; }
+      .tm-bulk-desc strong { color: var(--red); }
+      .tm-bulk-area { background:#fff; }
+      .tm-split-btn { width:100%; margin-top:10px; background: var(--gold); color:#fff; border:none; border-radius:11px; padding:13px; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; box-shadow:0 4px 12px rgba(184,137,59,.4); transition: transform .1s; }
+      .tm-split-btn:active { transform: translateY(2px); }
+      .tm-split-btn:disabled { opacity:.4; box-shadow:none; }
+      .tm-bulk-reopen { width:100%; background:none; border:2px dashed var(--gold); color:#8a6a1e; border-radius:12px; padding:12px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; }
+      .tm-split-msg { background:#eef4ea; border:1px solid #bcd6b0; color:#3f6b2e; border-radius:10px; padding:10px 14px; font-size:13px; font-weight:500; }
+      .tm-split-msg.err { background:#fbeee9; border-color:#e0b4a6; color: var(--red); }
+      .tm-hint-box { background:#fff8e6; border:1px solid #ecd9a6; border-radius:10px; padding:12px 14px; font-size:13px; color:#6b5a2a; line-height:1.8; }
+      .tm-hint-box strong { color: var(--red); }
+      .tm-hint-box code { background:#f1e4c2; padding:1px 6px; border-radius:5px; font-size:12px; }
+      .tm-qedit { background: var(--paper-2); border:1px solid var(--rule); border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:10px; box-shadow:0 2px 6px rgba(60,45,20,.05); }
+      .tm-qedit-head { display:flex; justify-content:space-between; align-items:center; }
+      .tm-qnum { font-family:'Klee One',cursive; font-weight:600; font-size:16px; color: var(--blue); }
+      .tm-remove { background:none; border:none; color: var(--red-soft); font-size:13px; cursor:pointer; font-family:inherit; }
+      .tm-qedit-foot { display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center; font-size:12px; color: var(--ink-soft); }
+      .tm-blank-count { background:#f1e4c2; color:#6b5a2a; padding:2px 8px; border-radius:999px; font-weight:700; }
+      .tm-preview-inline { opacity:.85; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+      .tm-preview-inline strong { color: var(--red); }
+      .tm-add-q { background:none; border:2px dashed var(--rule); color: var(--ink-soft); border-radius:12px; padding:13px; cursor:pointer; font-size:14px; font-weight:500; font-family:inherit; }
+      .tm-add-q:active { border-color: var(--blue); color: var(--blue); }
+
+      .tm-detail-card { position:relative; background: var(--paper-2); border:1px solid var(--rule); border-radius:4px 4px 12px 12px; padding:26px 20px 20px; margin-top:6px; box-shadow:0 5px 16px var(--shadow); }
+      .tm-detail-title { font-family:'Klee One',cursive; font-weight:600; font-size:26px; margin:4px 0 10px; text-decoration:underline; text-decoration-color: var(--gold); text-underline-offset:5px; text-decoration-thickness:2px; }
+      .tm-detail-meta { display:flex; flex-wrap:wrap; gap:14px; font-size:12px; color: var(--ink-soft); border-bottom:1px solid var(--rule); padding-bottom:12px; margin-bottom:6px; }
+      .tm-detail-qs { padding-left:20px; margin:0; }
+      .tm-detail-qs li { margin-bottom:18px; }
+      .tm-detail-qs li::marker { color: var(--red); font-weight:700; }
+      .tm-detail-q { font-weight:700; font-size:15.5px; margin-bottom:4px; }
+      .tm-detail-a { font-size:14px; color: var(--ink-soft); background:#fffdf6; border-left:3px solid var(--gold); padding:8px 12px; border-radius:0 8px 8px 0; white-space: pre-wrap; }
+      .tm-detail-a strong { color: var(--red); font-weight:700; }
+      .tm-detail-qmeta { font-size:11px; color: var(--ink-soft); margin-top:5px; opacity:.8; }
+      .tm-rich { white-space: pre-wrap; }
+      .tm-delete { display:block; margin:22px auto 0; background:none; border:none; color: var(--red-soft); font-size:13px; cursor:pointer; font-family:inherit; text-decoration:underline; }
+      .tm-confirm { display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:22px; font-size:14px; }
+      .tm-confirm > div { display:flex; gap:18px; align-items:center; }
+      .tm-delete-confirm { background: var(--red); color:#fff; border:none; padding:7px 18px; border-radius:999px; cursor:pointer; font-family:inherit; font-weight:700; }
+
+      .tm-recall { max-width:640px; margin:0 auto; padding:18px 18px 40px; min-height:100vh; }
+      .tm-progress { flex:1; height:7px; background: var(--rule); border-radius:999px; overflow:hidden; }
+      .tm-progress-fill { height:100%; background: var(--red); border-radius:999px; transition: width .3s ease; }
+      .tm-recall-count { font-size:13px; color: var(--ink-soft); font-weight:700; min-width:36px; text-align:right; }
+      .tm-recall-card { position:relative; background: var(--paper-2); border:1px solid var(--rule); border-radius:4px 4px 14px 14px; padding:30px 18px 24px; text-align:center; box-shadow:0 6px 20px var(--shadow); animation: tm-rise .35s ease; }
+      @keyframes tm-rise { from { opacity:0; transform: translateY(10px);} to {opacity:1; transform:none;} }
+      .tm-recall-title { font-family:'Klee One',cursive; font-weight:600; font-size:26px; margin:6px 0 6px; }
+      .tm-recall-instruction { font-size:12.5px; color: var(--ink-soft); margin:0 auto 20px; max-width:300px; }
+      .tm-recall-qs { display:flex; flex-direction:column; gap:14px; text-align:left; }
+      .tm-recall-q { border:1px solid var(--rule); border-radius:12px; padding:14px; background:#fffdf8; transition: border-color .2s; }
+      .tm-recall-q.graded.g-good { border-color: var(--red); }
+      .tm-recall-q.graded.g-vague { border-color: var(--gold); }
+      .tm-recall-q.graded.g-fail { border-color:#8a8275; }
+      .tm-recall-qline { display:flex; gap:8px; align-items:baseline; margin-bottom:10px; }
+      .tm-recall-qmark { color: var(--red); font-weight:700; font-family:'Klee One',cursive; font-size:15px; flex-shrink:0; }
+      .tm-recall-qtext { font-weight:700; font-size:16px; }
+      .tm-reveal { background:#efe7d2; border:1px solid var(--rule); color: var(--blue); border-radius:8px; padding:9px 16px; font-size:13px; cursor:pointer; font-family:inherit; font-weight:700; }
+      .tm-reveal:active { background: var(--blue); color:#fff; }
+      .tm-recall-answer { background:#fffdf6; border-left:3px solid var(--gold); padding:10px 14px; border-radius:0 8px 8px 0; font-size:14.5px; line-height:2; color: var(--ink); white-space: pre-wrap; animation: tm-fade .3s ease; }
+      @keyframes tm-fade { from {opacity:0;} to {opacity:1;} }
+      .tm-cloze { display:inline; background:#3a3a44; color:#3a3a44; border:none; border-bottom:2px solid var(--red); border-radius:4px; padding:0 4px; margin:0 1px; font-family:inherit; font-size:14.5px; cursor:pointer; letter-spacing:2px; vertical-align:baseline; }
+      .tm-cloze:active { background: var(--red); }
+      .tm-cloze-on { color: var(--red); font-weight:700; background:#fbeae2; border-radius:4px; padding:0 3px; animation: tm-fade .25s ease; }
+      .tm-reveal-keys { margin-top:10px; background:none; border:1px solid var(--blue); color: var(--blue); border-radius:8px; padding:7px 12px; font-size:12px; cursor:pointer; font-family:inherit; font-weight:700; }
+
+      .tm-qgrade { margin-top:14px; }
+      .tm-qgrade-label { font-size:12px; color: var(--ink-soft); font-weight:700; }
+      .tm-qgrade-btns { display:grid; grid-template-columns: repeat(3,1fr); gap:8px; margin-top:7px; }
+      .tm-qg { border:none; cursor:pointer; border-radius:10px; padding:11px 4px; font-family:inherit; font-weight:700; font-size:12.5px; color:#fff; box-shadow:0 3px 8px var(--shadow); transition: transform .1s; }
+      .tm-qg:active { transform: scale(.94); }
+      .tm-qg.fail { background:#8a8275; }
+      .tm-qg.vague { background: var(--gold); }
+      .tm-qg.good { background: var(--red); }
+      .tm-qresult { margin-top:12px; font-size:12.5px; font-weight:700; padding:8px 12px; border-radius:8px; }
+      .tm-qresult.r-good { background:#fbeae2; color: var(--red); }
+      .tm-qresult.r-vague { background:#fbf2dc; color:#8a6a1e; }
+      .tm-qresult.r-fail { background:#ecebe6; color:#6a655c; }
+
+      .tm-center-col { display:flex; align-items:center; justify-content:center; min-height:90vh; }
+      .tm-finish { text-align:center; }
+      .tm-finish-mark { width:72px; height:72px; border-radius:50%; background: var(--red); color:#fff; font-size:38px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; box-shadow:0 8px 20px rgba(181,64,47,.4); }
+      .tm-finish h2 { font-family:'Shippori Mincho',serif; font-size:22px; margin:0 0 8px; }
+      .tm-finish p { color: var(--ink-soft); font-size:14px; margin:0 auto 22px; max-width:320px; }
+      .tm-finish .tm-btn-primary { max-width:260px; margin:0 auto; }
+      .tm-backup-link { display:block; margin:16px auto 0; background:none; border:none; color: var(--blue); font-size:13px; text-decoration:underline; cursor:pointer; font-family:inherit; }
+      .tm-backup-sec { background: var(--paper-2); border:1px solid var(--rule); border-radius:14px; padding:16px; margin-bottom:16px; box-shadow:0 2px 6px rgba(60,45,20,.06); }
+      .tm-backup-sec h3 { font-family:'Shippori Mincho',serif; font-size:16px; margin:0 0 8px; border-left:4px solid var(--gold); padding-left:10px; }
+      .tm-backup-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+      .tm-backup-row .tm-save { flex:1; text-align:center; }
+      .tm-mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:11px; line-height:1.5; }
+</style>
+</head>
+<body>
+<div class="tm-root" id="app"></div>
+<script>
+
+(function(){
+  'use strict';
+  var KEY='trigger-memo-pwa-v1';
+  var INTERVALS=[0,1,2,4,8,16,32];
+  var MAX_LEVEL=INTERVALS.length-1;
+
+  function todayStr(){ return new Date().toISOString().slice(0,10); }
+  function addDays(dateStr,n){ var d=new Date(dateStr+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+  function isDueDate(date){ return !date || date<=todayStr(); }
+  function isDueQ(q){ return isDueDate(q.nextReview); }
+  function memoDue(m){ return m.questions.some(isDueQ); }
+  function fmtJP(dateStr){ if(!dateStr) return ''; var d=new Date(dateStr+'T00:00:00'); return (d.getMonth()+1)+'/'+d.getDate(); }
+  function earliestNext(m){ var a=m.questions.map(function(q){return q.nextReview;}).filter(Boolean).sort(); return a[0]||todayStr(); }
+  function memoLevel(m){ if(!m.questions.length) return 0; return Math.min.apply(null,m.questions.map(function(q){return q.level||0;})); }
+  function dueLabel(date){ var t=todayStr(); if(isDueDate(date)) return '今すぐ'; if(date===addDays(t,1)) return '明日'; var diff=Math.round((new Date(date)-new Date(t))/86400000); return diff+'日後'; }
+  function uid(){ return Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
+  function nextSchedule(level,grade){
+    if(grade==='good'){ var l=Math.min((level||0)+1,MAX_LEVEL); return {level:l,nextReview:addDays(todayStr(),INTERVALS[l])}; }
+    if(grade==='vague'){ return {level:level||0,nextReview:addDays(todayStr(),1)}; }
+    return {level:0,nextReview:todayStr()};
+  }
+  function parseTokens(text){
+    var parts=[]; text=text||''; var re=/\*\*([\s\S]+?)\*\*/g; var last=0; var m;
+    while((m=re.exec(text))){ if(m.index>last) parts.push({type:'text',value:text.slice(last,m.index)}); parts.push({type:'bold',value:m[1]}); last=m.index+m[0].length; }
+    if(last<text.length) parts.push({type:'text',value:text.slice(last)});
+    return parts;
+  }
+  function countBlanks(text){ return parseTokens(text).filter(function(t){return t.type==='bold';}).length; }
+
+  function autoParse(raw){
+    var text=String(raw||'').replace(/\r\n?/g,'\n');
+    var lines=text.split('\n'); var preamble=[];
+    function clean(s){
+      return s.replace(/^#{1,6}\s*/,'')
+        .replace(/^\s*(?:[①-⑳]|[（(]\s*\d+\s*[）)]|第[一二三四五六七八九十\d]+[\.\．、)）]?|\d+\s*[\.\．、)）:：])\s*/,'')
+        .replace(/^\*\*|\*\*$/g,'')
+        .replace(/[:：]\s*$/,'')
+        .trim();
+    }
+    function boundary(line){
+      var l=line.trim(); if(!l) return null; if(/^>/.test(l)) return null; var m;
+      if((m=l.match(/^#{1,6}\s+(.+)$/))) return clean(m[1]);
+      if((m=l.match(/^(?:Q\s*\d*|問\s*\d*|問い)\s*[\.\):：、]\s*(.*)$/i))) return clean(m[1]||'');
+      if(/[?？]$/.test(l) && !/^[\*\-•・]/.test(l) && l.length<=60) return clean(l);
+      if(/^\*\*[^*]+\*\*[:：]?$/.test(l) && !/^[\*\-•・]/.test(l)) return clean(l);
+      return null;
+    }
+    function stripA(l){ return l.replace(/^\s*(?:A\s*\d*|答え?|規範|解答)\s*[\.\):：、]\s*/i,''); }
+    var items=[]; var cur=null;
+    lines.forEach(function(line){
+      var b=boundary(line);
+      if(b!==null){ if(cur) items.push(cur); cur={q:b,aLines:[]}; }
+      else if(cur){ cur.aLines.push(line); }
+      else if(line.trim()){ preamble.push(line); }
+    });
+    if(cur) items.push(cur);
+    function buildAnswer(aLines){
+      var body=aLines.map(function(l){return l.replace(/^\s*>+\s?/,'');})
+        .map(function(l){return l.replace(/^(\s*)[\*\-•]\s+/,'$1・');}).join('\n');
+      body=stripA(body); body=body.replace(/\n{3,}/g,'\n\n').replace(/[ \t]+$/gm,'').trim();
+      return body;
+    }
+    var questions=items.map(function(it){
+      var q=it.q.trim(); var a=buildAnswer(it.aLines);
+      if(q && !/[?？]$/.test(q)) q=q+'は？';
+      return {q:q,a:a};
+    }).filter(function(x){return x.q||x.a;});
+    if(questions.length===0){
+      var paras=text.split(/\n\s*\n/).map(function(p){return p.trim();}).filter(Boolean);
+      questions=paras.map(function(p){return {q:'',a:buildAnswer(p.split('\n'))};});
+    }
+    var whole=preamble.join('\n')+'\n'+text; var title=''; var tag='';
+    var br=whole.match(/【([^】]+)】/); if(br) title=br[1].trim();
+    var art=whole.match(/(?:民法|刑法|刑事訴訟法|刑訴|民事訴訟法|民訴|会社法|商法|憲法|行政法)?\s*第?\s*\d+\s*条(?:の\d+)?(?:\s*\d+\s*項)?/);
+    if(!title && art) title=art[0].replace(/\s+/g,'');
+    var law=whole.match(/民法|刑事訴訟法|刑訴|刑法|民事訴訟法|民訴|会社法|商法|憲法|行政法/);
+    if(law) tag = law[0]==='刑事訴訟法'?'刑訴':(law[0]==='民事訴訟法'?'民訴':law[0]);
+    return {title:title,tag:tag,questions:questions};
+  }
+
+  function seedMemos(){
+    function mk(arr){ return arr.map(function(q){ q.id=uid(); q.level=0; q.nextReview=todayStr(); q.history=[]; return q; }); }
+    return [
+      { id:uid(), title:'訴因の特定（刑訴256条3項）', tag:'刑訴', createdAt:todayStr(), questions: mk([
+        {q:'256条3項で訴因の特定が要求される趣旨と、そこから導かれる特定の程度は？', a:'訴因の特定が要求される趣旨は、裁判所に対して**審判対象を明確にする**とともに、被告人の**防御の範囲を示す**点にある。\nもっとも、訴因は第一次的には審判対象を明確にする点に趣旨があり、被告人の防御は釈明等その後の手続で柔軟に対応すれば足りる。\nしたがって、**他の犯罪事実との識別が可能な程度に特定**されていれば足りる。'},
+        {q:'概括的記載が許容されるための一般規範（特殊事情＋2要件）は？', a:'犯罪の種類・性質等により証拠で明らかにし得る事実に限界があるなどの**特殊事情**のため概括的記載にとどめざるを得なかった場合でも、\n①被告人の行為が当該犯罪の**構成要件に該当すると認識でき**、\n②**他の犯罪事実と区別される程度に特定**されていれば、\n検察官が起訴当時の証拠に基づきできる限り特定した以上、訴因の特定に欠けるところはない。'},
+        {q:'覚せい剤自己使用罪・複数回の使用が疑われ「ない」場合の処理は？', a:'直ちに他の犯罪事実との**識別が問題となることはなく**、訴因の特定に欠けるところはない。'},
+        {q:'覚せい剤自己使用罪・複数回の使用が疑われる場合の処理は？', a:'正面から他の犯罪事実との識別が問題となる。\nこの場合、検察官が当該幅のある日時において**「最終の1回の行為」を起訴した趣旨である旨、釈明**することによって特定を補充することを要する。\nこの釈明があれば、訴因の特定に欠けるところはない。'}
+      ])},
+      { id:uid(), title:'民法94条2項', tag:'民法', createdAt:todayStr(), questions: mk([
+        {q:'94条2項の趣旨は？', a:'虚偽の外観を信頼した第三者を保護する規定。真の権利者に**帰責性**がある以上、外観を信頼した**善意の第三者**を保護し、**取引の安全**を図るべきという**権利外観法理**の現れ。'},
+        {q:'その要件は？', a:'①**虚偽の外観の存在**\n②真の権利者の**帰責性**（外観作出への意思的関与）\n③第三者が**善意**であること（通説は無過失まで不要）\n④**第三者**にあたること（当事者・包括承継人以外で、新たに独立の法律上の利害関係を有する者）。'},
+        {q:'94条2項の類推適用の要件は？', a:'①虚偽の外観の存在　②本人の**帰責性**（作出・承認・放置）　③第三者の信頼。\n意思外形対応型は**善意**で足りるが、意思外形非対応型は**110条併用**で**善意無過失**を要する。'},
+        {q:'具体例は？', a:'AがB名義の不実の登記を作出・放置 → Bが**善意のC**に売却 → Cは**94条2項類推適用**で保護され、AはCに所有権を対抗できない。'}
+      ])}
+    ];
+  }
+  function defaultData(){ return {memos:seedMemos(), stats:{totalRecalls:0,totalGood:0,lastStudyDate:null,streak:0}}; }
+  function migrate(data){
+    if(!data||!data.memos) return defaultData();
+    data.memos=data.memos.map(function(m){
+      m.questions=(m.questions||[]).map(function(q){
+        if(q.level==null) q.level=(m.level||0);
+        if(q.nextReview==null) q.nextReview=(m.nextReview||todayStr());
+        if(q.history==null) q.history=[];
+        return q;
+      });
+      return m;
+    });
+    if(!data.stats) data.stats={totalRecalls:0,totalGood:0,lastStudyDate:null,streak:0};
+    return data;
+  }
+
+  var DATA;
+  function load(){ try{ var r=localStorage.getItem(KEY); DATA = r?migrate(JSON.parse(r)):defaultData(); }catch(e){ DATA=defaultData(); } }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DATA)); }catch(e){} }
+
+  function saveMemo(memo){
+    var exists=DATA.memos.some(function(m){return m.id===memo.id;});
+    if(exists){
+      DATA.memos=DATA.memos.map(function(m){ return m.id===memo.id ? {id:m.id,createdAt:m.createdAt,title:memo.title,tag:memo.tag,questions:memo.questions} : m; });
+    } else {
+      memo.createdAt=todayStr();
+      DATA.memos.unshift(memo);
+    }
+    save();
+  }
+  function deleteMemo(id){ DATA.memos=DATA.memos.filter(function(m){return m.id!==id;}); save(); }
+  function gradeQuestion(memoId,qId,grade){
+    DATA.memos.forEach(function(m){
+      if(m.id!==memoId) return;
+      m.questions.forEach(function(q){
+        if(q.id!==qId) return;
+        var s=nextSchedule(q.level,grade); q.level=s.level; q.nextReview=s.nextReview;
+        q.history=[{date:todayStr(),grade:grade}].concat(q.history||[]).slice(0,40);
+      });
+    });
+    var st=DATA.stats; st.totalRecalls+=1; if(grade==='good') st.totalGood+=1;
+    var t=todayStr();
+    if(st.lastStudyDate!==t){ st.streak = (st.lastStudyDate===addDays(t,-1)) ? st.streak+1 : 1; st.lastStudyDate=t; }
+    save();
+  }
+
+  // ---- DOM helpers ----
+  function el(tag,attrs,children){
+    var e=document.createElement(tag); attrs=attrs||{};
+    for(var k in attrs){ var v=attrs[k]; if(v==null) continue;
+      if(k==='class') e.className=v;
+      else if(k==='text') e.textContent=v;
+      else if(k.slice(0,2)==='on' && typeof v==='function') e.addEventListener(k.slice(2).toLowerCase(),v);
+      else if(k==='value') e.value=v;
+      else if(k==='disabled'){ if(v) e.setAttribute('disabled',''); }
+      else e.setAttribute(k,v);
+    }
+    if(children!=null) appendC(e,children);
+    return e;
+  }
+  function appendC(parent,c){
+    if(c==null||c===false) return;
+    if(Array.isArray(c)){ c.forEach(function(x){appendC(parent,x);}); return; }
+    if(typeof c==='string'||typeof c==='number'){ parent.appendChild(document.createTextNode(String(c))); return; }
+    parent.appendChild(c);
+  }
+  function clear(n){ while(n.firstChild) n.removeChild(n.firstChild); }
+  function richNodes(text){
+    return parseTokens(text).map(function(t){ return t.type==='bold' ? el('strong',null,t.value) : document.createTextNode(t.value); });
+  }
+  function spiral(count){
+    var s=el('div',{'class':'tm-spiral','aria-hidden':'true'});
+    for(var i=0;i<count;i++) s.appendChild(el('span',{'class':'tm-ring'}));
+    return s;
+  }
+  function show(node){ var r=document.getElementById('app'); clear(r); r.appendChild(node); window.scrollTo(0,0); }
+
+  // ---- Home ----
+  function renderHome(){
+    var memos=DATA.memos; var due=memos.filter(memoDue); var st=DATA.stats;
+    var acc = st.totalRecalls>0 ? Math.round(st.totalGood/st.totalRecalls*100) : 0;
+    var page=el('div',{'class':'tm-page'});
+    page.appendChild(el('header',{'class':'tm-head'},[
+      el('div',null,[ el('h1',{'class':'tm-logo',text:'トリガーメモ'}), el('p',{'class':'tm-sub',text:'想起で規範を定着させる'}) ]),
+      el('div',{'class':'tm-streak'},[ el('span',{'class':'tm-streak-num',text:String(st.streak)}), el('span',{'class':'tm-streak-label',text:'日連続'}) ])
+    ]));
+    var dueCard=el('section',{'class':'tm-due-card'});
+    dueCard.appendChild(el('div',{'class':'tm-due-top'},[
+      el('span',{'class':'tm-due-kicker',text:'起床後の想起'}),
+      el('h2',{'class':'tm-due-count'}, due.length>0 ? [ el('strong',{text:String(due.length)}), ' 論点の復習' ] : '今日の分は完了')
+    ]));
+    if(due.length>0){
+      dueCard.appendChild(el('button',{'class':'tm-btn-primary',onclick:function(){ startRecall(due.map(function(m){return m.id;})); },text:'何も見ずに思い出す →'}));
+    } else {
+      dueCard.appendChild(el('p',{'class':'tm-due-empty',text:'よく寝て、また明日。新しい論点を準備しておきましょう。'}));
+    }
+    page.appendChild(dueCard);
+    page.appendChild(el('div',{'class':'tm-stats'},[
+      stat('登録論点',memos.length), stat('想起回数',st.totalRecalls), stat('バッチリ率',acc+'%')
+    ]));
+    page.appendChild(el('div',{'class':'tm-list-head'},[
+      el('h3',{text:'論点一覧'}),
+      el('button',{'class':'tm-add',onclick:function(){ renderEditor(null); },text:'＋ 準備する'})
+    ]));
+    if(memos.length===0){
+      page.appendChild(el('div',{'class':'tm-empty'},[
+        el('p',{text:'まだ論点がありません。'}),
+        el('p',{'class':'tm-empty-sub',text:'前夜に「問い」だけを書き、答えのキーワードを **太字** にして登録します。'})
+      ]));
+    }
+    var cards=el('div',{'class':'tm-cards'});
+    memos.slice().sort(function(a,b){ return earliestNext(a).localeCompare(earliestNext(b)); }).forEach(function(m){ cards.appendChild(memoCard(m)); });
+    page.appendChild(cards);
+    page.appendChild(el('p',{'class':'tm-footnote',text:'前夜に問いを準備 → 翌朝テキストを開かず想起 → 答えと照合。ズレた問いだけが翌日に再浮上します。'}));
+    page.appendChild(el('button',{'class':'tm-backup-link',onclick:renderBackup,text:'⚙ バックアップ（書き出し・読み込み）'}));
+    show(page);
+  }
+  function stat(label,value){ return el('div',{'class':'tm-stat'},[ el('div',{'class':'tm-stat-val',text:String(value)}), el('div',{'class':'tm-stat-lab',text:label}) ]); }
+  function memoCard(m){
+    var due=memoDue(m); var dueCount=m.questions.filter(isDueQ).length; var lv=memoLevel(m);
+    var card=el('div',{'class':'tm-memo'+(due?' is-due':'')});
+    card.appendChild(spiral(6));
+    var body=el('div',{'class':'tm-memo-body',onclick:function(){ renderDetail(m.id); }});
+    var meta=el('div',{'class':'tm-memo-meta'});
+    if(m.tag) meta.appendChild(el('span',{'class':'tm-chip',text:m.tag}));
+    meta.appendChild(el('span',{'class':'tm-when'+(due?' due':''),text: due ? ('● '+dueCount+'問 想起できます') : ('次回 '+fmtJP(earliestNext(m))+'・'+dueLabel(earliestNext(m))) }));
+    body.appendChild(meta);
+    body.appendChild(el('h4',{'class':'tm-memo-title',text:m.title}));
+    var ul=el('ul',{'class':'tm-q-preview'});
+    m.questions.slice(0,3).forEach(function(q){ ul.appendChild(el('li',{text:q.q})); });
+    if(m.questions.length>3) ul.appendChild(el('li',{'class':'tm-more',text:'ほか '+(m.questions.length-3)+' 問'}));
+    body.appendChild(ul);
+    var lvl=el('div',{'class':'tm-level'});
+    for(var i=0;i<MAX_LEVEL;i++) lvl.appendChild(el('span',{'class':'tm-dot'+(i<lv?' on':'')}));
+    body.appendChild(lvl);
+    card.appendChild(body);
+    card.appendChild(el('button',{'class':'tm-memo-recall',onclick:function(){ startRecall([m.id]); },text:'想起'}));
+    return card;
+  }
+
+  // ---- Editor ----
+  function renderEditor(initial){
+    var st={ title: initial?initial.title:'', tag: initial?initial.tag:'',
+      qs: initial && initial.questions.length ? initial.questions.map(function(q){return {id:q.id,q:q.q,a:q.a,level:q.level,nextReview:q.nextReview,history:q.history};}) : [{id:uid(),q:'',a:''}],
+      showBulk: !initial };
+    var page=el('div',{'class':'tm-page'});
+    function canSave(){ return st.title.trim() && st.qs.some(function(q){return q.q.trim();}); }
+    var saveBtn;
+    function refreshSave(){ if(saveBtn){ if(canSave()) saveBtn.removeAttribute('disabled'); else saveBtn.setAttribute('disabled',''); } }
+    function doSave(){
+      var cleaned=st.qs.filter(function(q){return q.q.trim();}).map(function(q){
+        return {id:q.id||uid(), q:q.q.trim(), a:(q.a||'').trim(), level:q.level==null?0:q.level, nextReview:q.nextReview||todayStr(), history:q.history||[]};
+      });
+      if(!st.title.trim()||!cleaned.length) return;
+      saveMemo({ id: initial?initial.id:uid(), title:st.title.trim(), tag:st.tag.trim(), questions:cleaned });
+      renderHome();
+    }
+    saveBtn=el('button',{'class':'tm-save',onclick:doSave,text:'保存'});
+    page.appendChild(el('header',{'class':'tm-editor-head'},[
+      el('button',{'class':'tm-link',onclick:function(){ initial?renderDetail(initial.id):renderHome(); },text:'← 戻る'}),
+      el('span',{'class':'tm-editor-title',text: initial?'論点を編集':'前夜の準備'}),
+      saveBtn
+    ]));
+    var form=el('div',{'class':'tm-form'}); page.appendChild(form);
+
+    var msgEl=el('div',{'class':'tm-split-msg',style:'display:none'});
+    var titleInput, tagInput, qContainer;
+
+    var bulkArea=el('textarea',{'class':'tm-textarea tm-bulk-area',rows:'7',placeholder:'ここに論証をそのまま貼り付け\n\n### 1. ○○の趣旨\n> …規範…\n\n### 2. △△の要件\n> …規範…'});
+    var bulkWrap=el('div');
+    function buildBulk(){
+      clear(bulkWrap);
+      if(st.showBulk){
+        var box=el('div',{'class':'tm-bulk'});
+        var head=el('div',{'class':'tm-bulk-head'},[ el('span',{'class':'tm-bulk-title',text:'📋 論証を貼り付けて自動作成'}) ]);
+        if(initial) head.appendChild(el('button',{'class':'tm-link',onclick:function(){ st.showBulk=false; buildBulk(); },text:'閉じる'}));
+        box.appendChild(head);
+        var desc=el('p',{'class':'tm-bulk-desc'});
+        appendC(desc,['見出し（', el('code',null,'###'),' や ', el('code',null,'1.'), '）や「〜は？」ごとに、問いと答えへ自動で分けます。', el('strong',null,'**太字**'), ' はそのまま穴埋めになります。']);
+        box.appendChild(desc);
+        box.appendChild(bulkArea);
+        box.appendChild(el('button',{'class':'tm-split-btn',onclick:doSplit,text:'✨ 自動で問い・答えに分割する'}));
+        bulkWrap.appendChild(box);
+      } else {
+        bulkWrap.appendChild(el('button',{'class':'tm-bulk-reopen',onclick:function(){ st.showBulk=true; buildBulk(); },text:'📋 文章を貼り付けて追加'}));
+      }
+    }
+    function doSplit(){
+      var raw=bulkArea.value;
+      if(!raw.trim()) return;
+      var parsed=autoParse(raw);
+      if(!parsed.questions.length){ setMsg('× うまく分割できませんでした。見出し（### や 1.）や「〜は？」を手がかりにします。',true); return; }
+      if(parsed.title && !st.title.trim()){ st.title=parsed.title; titleInput.value=parsed.title; }
+      if(parsed.tag && !st.tag.trim()){ st.tag=parsed.tag; tagInput.value=parsed.tag; }
+      var fresh=parsed.questions.map(function(q){ return {id:uid(),q:q.q,a:q.a,level:0,nextReview:todayStr(),history:[]}; });
+      var allEmpty=st.qs.every(function(q){return !q.q.trim() && !q.a.trim();});
+      st.qs = allEmpty ? fresh : st.qs.concat(fresh);
+      var blanks=parsed.questions.reduce(function(n,q){return n+countBlanks(q.a);},0);
+      setMsg('✓ '+parsed.questions.length+'問に分割しました'+(blanks?'（穴埋め '+blanks+' 箇所）':'')+'。下で確認・編集できます。',false);
+      bulkArea.value=''; st.showBulk=false; buildBulk(); buildQuestions(); refreshSave();
+    }
+    function setMsg(text,err){ msgEl.textContent=text; msgEl.className='tm-split-msg'+(err?' err':''); msgEl.style.display=''; }
+
+    form.appendChild(bulkWrap); buildBulk();
+    form.appendChild(msgEl);
+
+    titleInput=el('input',{'class':'tm-input tm-input-title',placeholder:'例）訴因の特定（刑訴256条3項）',value:st.title});
+    titleInput.addEventListener('input',function(){ st.title=titleInput.value; refreshSave(); });
+    form.appendChild(el('label',{'class':'tm-field'},[ el('span',{'class':'tm-label',text:'論点・条文'}), titleInput ]));
+
+    tagInput=el('input',{'class':'tm-input',placeholder:'例）刑訴 / 民法',value:st.tag});
+    tagInput.addEventListener('input',function(){ st.tag=tagInput.value; });
+    form.appendChild(el('label',{'class':'tm-field'},[ el('span',{'class':'tm-label',text:'科目・分野（任意）'}), tagInput ]));
+
+    var hint=el('div',{'class':'tm-hint-box'});
+    appendC(hint,['自動分割した内容は下でそのまま編集できます。覚えたい語を ', el('code',null,'**…**'), ' で囲むと', el('strong',null,'穴埋め'), 'になります。']);
+    form.appendChild(hint);
+
+    qContainer=el('div'); form.appendChild(qContainer);
+    function buildQuestions(){
+      clear(qContainer);
+      st.qs.forEach(function(q,idx){
+        var card=el('div',{'class':'tm-qedit'});
+        var headRow=el('div',{'class':'tm-qedit-head'},[ el('span',{'class':'tm-qnum',text:'問 '+(idx+1)}) ]);
+        if(st.qs.length>1) headRow.appendChild(el('button',{'class':'tm-remove',onclick:function(){ st.qs.splice(idx,1); buildQuestions(); refreshSave(); },text:'削除'}));
+        card.appendChild(headRow);
+        var qi=el('input',{'class':'tm-input',placeholder:'問い（例：256条3項の趣旨と特定の程度は？）',value:q.q});
+        qi.addEventListener('input',function(){ q.q=qi.value; refreshSave(); });
+        card.appendChild(qi);
+        var ta=el('textarea',{'class':'tm-textarea',rows:'4',placeholder:'答え・規範。**重要語**を太字にすると穴埋めになります',value:q.a});
+        var foot=el('div',{'class':'tm-qedit-foot'});
+        var countSpan=el('span',{});
+        function updFoot(){
+          var b=countBlanks(q.a||'');
+          clear(foot);
+          if(b>0) foot.appendChild(el('span',{'class':'tm-blank-count',text:'穴埋め '+b+' 箇所'}));
+          else foot.appendChild(el('span',{'class':'tm-blank-hint',text:'**…** でキーワードを囲むと穴埋めに'}));
+          if((q.a||'').trim()){
+            var pv=el('span',{'class':'tm-preview-inline'}); appendC(pv,['プレビュー：'].concat(richNodes((q.a||'').split('\n')[0]))); foot.appendChild(pv);
+          }
+        }
+        ta.addEventListener('input',function(){ q.a=ta.value; updFoot(); });
+        card.appendChild(ta);
+        card.appendChild(foot); updFoot();
+        qContainer.appendChild(card);
+      });
+      qContainer.appendChild(el('button',{'class':'tm-add-q',onclick:function(){ st.qs.push({id:uid(),q:'',a:''}); buildQuestions(); },text:'＋ 問いを追加'}));
+      if(initial) qContainer.appendChild(el('button',{'class':'tm-save tm-save-full',onclick:doSave,text:'変更を保存'}));
+    }
+    buildQuestions(); refreshSave();
+    show(page);
+  }
+
+  // ---- Detail ----
+  function renderDetail(memoId){
+    var m=DATA.memos.filter(function(x){return x.id===memoId;})[0];
+    if(!m){ renderHome(); return; }
+    var confirmDel=false;
+    var page=el('div',{'class':'tm-page'});
+    page.appendChild(el('header',{'class':'tm-editor-head'},[
+      el('button',{'class':'tm-link',onclick:renderHome,text:'← 一覧'}),
+      el('span',{'class':'tm-editor-title',text:m.tag||'論点'}),
+      el('button',{'class':'tm-link',onclick:function(){ renderEditor(m); },text:'編集'})
+    ]));
+    var card=el('div',{'class':'tm-detail-card'});
+    card.appendChild(spiral(9));
+    card.appendChild(el('h2',{'class':'tm-detail-title',text:m.title}));
+    card.appendChild(el('div',{'class':'tm-detail-meta'},[
+      el('span',{text:'レベル '+memoLevel(m)+'/'+MAX_LEVEL}),
+      el('span',{text:'次回 '+fmtJP(earliestNext(m))+'（'+dueLabel(earliestNext(m))+'）'}),
+      el('span',{text:'問い '+m.questions.length})
+    ]));
+    var ol=el('ol',{'class':'tm-detail-qs'});
+    m.questions.forEach(function(q){
+      var li=el('li');
+      li.appendChild(el('div',{'class':'tm-detail-q',text:q.q}));
+      if(q.a){ var a=el('div',{'class':'tm-detail-a'}); appendC(a,richNodes(q.a)); li.appendChild(a); }
+      li.appendChild(el('div',{'class':'tm-detail-qmeta',text:'Lv'+(q.level||0)+'・次回 '+fmtJP(q.nextReview)+(countBlanks(q.a)>0?'・穴埋め'+countBlanks(q.a):'')}));
+      ol.appendChild(li);
+    });
+    card.appendChild(ol);
+    page.appendChild(card);
+    page.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){ startRecall([m.id]); },text:'この論点を想起する →'}));
+    var delWrap=el('div'); page.appendChild(delWrap);
+    function buildDel(){
+      clear(delWrap);
+      if(!confirmDel){ delWrap.appendChild(el('button',{'class':'tm-delete',onclick:function(){confirmDel=true;buildDel();},text:'この論点を削除'})); }
+      else {
+        delWrap.appendChild(el('div',{'class':'tm-confirm'},[
+          el('span',{text:'本当に削除しますか？'}),
+          el('div',null,[
+            el('button',{'class':'tm-link',onclick:function(){confirmDel=false;buildDel();},text:'やめる'}),
+            el('button',{'class':'tm-delete-confirm',onclick:function(){ deleteMemo(m.id); renderHome(); },text:'削除する'})
+          ])
+        ]));
+      }
+    }
+    buildDel();
+    show(page);
+  }
+
+  // ---- Recall ----
+  var rs;
+  function startRecall(ids){
+    var memos=ids.map(function(id){ return DATA.memos.filter(function(m){return m.id===id;})[0]; }).filter(Boolean);
+    rs={ memos:memos, idx:0, opened:{}, cloze:{}, graded:{}, totalDone:0 };
+    renderRecall();
+  }
+  function renderRecall(){
+    if(!rs.memos.length){ show(finish('想起する論点がありません','',true)); return; }
+    if(rs.idx>=rs.memos.length){ show(finish('想起、おつかれさまでした', rs.totalDone+' 問を照合しました。ズレた問いは近いうちに再出題されます。',false)); return; }
+    var memo=rs.memos[rs.idx];
+    var dueQs=memo.questions.filter(isDueQ);
+    var qs= dueQs.length?dueQs:memo.questions;
+    var allGraded=qs.every(function(q){return rs.graded[q.id];});
+
+    var wrap=el('div',{'class':'tm-recall'});
+    wrap.appendChild(el('div',{'class':'tm-recall-bar'},[
+      el('button',{'class':'tm-link',onclick:renderHome,text:'✕ 中断'}),
+      el('div',{'class':'tm-progress'},[ el('div',{'class':'tm-progress-fill',style:'width:'+(rs.idx/rs.memos.length*100)+'%'}) ]),
+      el('span',{'class':'tm-recall-count',text:(rs.idx+1)+'/'+rs.memos.length})
+    ]));
+    var card=el('div',{'class':'tm-recall-card'});
+    card.appendChild(spiral(9));
+    if(memo.tag) card.appendChild(el('span',{'class':'tm-chip tm-chip-center',text:memo.tag}));
+    card.appendChild(el('h2',{'class':'tm-recall-title',text:memo.title}));
+    card.appendChild(el('p',{'class':'tm-recall-instruction',text:'テキストを開かず、頭の中で規範を引き出してから「答えを開く」'}));
+    var qsWrap=el('div',{'class':'tm-recall-qs'});
+    qs.forEach(function(q,i){
+      var tokens=parseTokens(q.a||''); var isOpen=rs.opened[q.id]; var g=rs.graded[q.id];
+      var qb=el('div',{'class':'tm-recall-q'+(g?(' graded g-'+g):'')});
+      qb.appendChild(el('div',{'class':'tm-recall-qline'},[ el('span',{'class':'tm-recall-qmark',text:'Q'+(i+1)}), el('span',{'class':'tm-recall-qtext',text:q.q}) ]));
+      if(!isOpen){
+        qb.appendChild(el('button',{'class':'tm-reveal',onclick:function(){ rs.opened[q.id]=true; renderRecall(); },text:'答えを開く'}));
+      } else {
+        var ans=el('div',{'class':'tm-recall-answer'});
+        tokens.forEach(function(t,ti){
+          if(t.type==='text'){ ans.appendChild(document.createTextNode(t.value)); }
+          else if(rs.cloze[q.id+':'+ti]){ ans.appendChild(el('strong',{'class':'tm-cloze-on',text:t.value})); }
+          else {
+            var len=Math.min(Math.max(Array.from(t.value).length,2),6);
+            ans.appendChild(el('button',{'class':'tm-cloze',onclick:(function(key){return function(){ rs.cloze[key]=true; renderRecall(); };})(q.id+':'+ti),text:Array(len+1).join('⬚')}));
+          }
+        });
+        qb.appendChild(ans);
+        if(countBlanks(q.a)>0 && !g){
+          qb.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ tokens.forEach(function(t,ti){ if(t.type==='bold') rs.cloze[q.id+':'+ti]=true; }); renderRecall(); },text:'キーワードを全部表示'}));
+        }
+        if(!g){
+          qb.appendChild(el('div',{'class':'tm-qgrade'},[
+            el('span',{'class':'tm-qgrade-label',text:'この問いは？'}),
+            el('div',{'class':'tm-qgrade-btns'},[
+              gradeBtn(memo,q,'fail','✕ 思い出せず'),
+              gradeBtn(memo,q,'vague','△ あいまい'),
+              gradeBtn(memo,q,'good','○ バッチリ')
+            ])
+          ]));
+        } else {
+          var label = g==='good'?'○ バッチリ → 間隔を延長':(g==='vague'?'△ あいまい → 明日また':'✕ 思い出せず → 当日中に再出題');
+          qb.appendChild(el('div',{'class':'tm-qresult r-'+g,text:label}));
+        }
+      }
+      qsWrap.appendChild(qb);
+    });
+    card.appendChild(qsWrap);
+    wrap.appendChild(card);
+    if(allGraded){
+      wrap.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){ rs.opened={}; rs.cloze={}; rs.graded={}; rs.idx+=1; renderRecall(); },text: (rs.idx+1<rs.memos.length)?'次の論点へ →':'想起を完了する ✓'}));
+    }
+    show(wrap);
+  }
+  function gradeBtn(memo,q,grade,label){
+    return el('button',{'class':'tm-qg '+grade,onclick:function(){
+      gradeQuestion(memo.id,q.id,grade); rs.graded[q.id]=grade; rs.totalDone+=1;
+      var toks=parseTokens(q.a||''); toks.forEach(function(t,ti){ if(t.type==='bold') rs.cloze[q.id+':'+ti]=true; });
+      renderRecall();
+    },text:label});
+  }
+  function finish(title,desc,empty){
+    var page=el('div',{'class':'tm-page tm-center-col'});
+    var box=el('div',{'class':'tm-finish'});
+    box.appendChild(el('div',{'class':'tm-finish-mark',text:'✓'}));
+    box.appendChild(el('h2',{text:title}));
+    if(desc) box.appendChild(el('p',{text:desc}));
+    box.appendChild(el('button',{'class':'tm-btn-primary',onclick:renderHome,text: empty?'ホームへ':'ホームへ戻る'}));
+    page.appendChild(box);
+    return page;
+  }
+
+  // ---- Backup (export / import) ----
+  function downloadJSON(cb){
+    var data=JSON.stringify(DATA,null,2);
+    var filename='trigger-memo-backup-'+todayStr()+'.json';
+    // iPhone等では共有シート経由が確実（「ファイル」やメモに保存できる）
+    try{
+      if(typeof File!=='undefined' && navigator.canShare){
+        var file=new File([data],filename,{type:'application/json'});
+        if(navigator.canShare({files:[file]})){
+          navigator.share({files:[file],title:'トリガーメモ バックアップ'}).then(function(){ if(cb)cb('shared'); },function(){ if(cb)cb('cancel'); });
+          return;
+        }
+      }
+    }catch(e){}
+    // PC等のフォールバック：通常ダウンロード
+    try{
+      var blob=new Blob([data],{type:'application/json'});
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement('a'); a.href=url; a.download=filename;
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); if(a.parentNode) a.parentNode.removeChild(a); },1500);
+      if(cb)cb('download');
+    }catch(e){ if(cb)cb('fail'); }
+  }
+  function importData(text){
+    var incoming=JSON.parse(text);
+    var memos = (incoming && incoming.memos) ? incoming.memos : (Array.isArray(incoming)?incoming:null);
+    if(!memos || !memos.length) throw new Error('no memos');
+    var inc=migrate({memos:memos, stats:(incoming&&incoming.stats)?incoming.stats:null});
+    var map={}; DATA.memos.forEach(function(m){ map[m.id]=m; });
+    var order=DATA.memos.map(function(m){ return m.id; });
+    var count=0;
+    inc.memos.forEach(function(m){ if(!m.id) m.id=uid(); if(!map[m.id]) order.push(m.id); map[m.id]=m; count++; });
+    DATA.memos=order.map(function(id){ return map[id]; });
+    if(inc.stats && (inc.stats.totalRecalls||0) > (DATA.stats.totalRecalls||0)) DATA.stats=inc.stats;
+    return count;
+  }
+  function renderBackup(){
+    var page=el('div',{'class':'tm-page'});
+    page.appendChild(el('header',{'class':'tm-editor-head'},[
+      el('button',{'class':'tm-link',onclick:renderHome,text:'← ホーム'}),
+      el('span',{'class':'tm-editor-title',text:'バックアップ'}),
+      el('span',{})
+    ]));
+    page.appendChild(el('div',{'class':'tm-hint-box',text:'iPhoneは端末の都合でアプリの保存データが消えることがあります。論点が増えたら、ときどき書き出して安全な場所（メモ・メール・クラウド）に保管してください。'}));
+
+    var json=JSON.stringify(DATA,null,2);
+    var exp=el('div',{'class':'tm-backup-sec'});
+    exp.appendChild(el('h3',{text:'書き出し（バックアップ）'}));
+    exp.appendChild(el('p',{'class':'tm-bulk-desc',text:'下の文字をすべてコピーして保存します。復元時はこれを「読み込み」に貼り付けます。'}));
+    var exportArea=el('textarea',{'class':'tm-textarea tm-mono',rows:'6',readonly:'readonly',value:json});
+    exp.appendChild(exportArea);
+    var copyMsg=el('div',{'class':'tm-blank-hint',style:'margin-top:6px'});
+    var copyBtn=el('button',{'class':'tm-save',onclick:function(){
+      exportArea.focus(); exportArea.select();
+      var ok=function(){ copyMsg.textContent='✓ コピーしました'; };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(json).then(ok,function(){ try{document.execCommand('copy'); ok();}catch(e){} });
+      } else { try{document.execCommand('copy'); ok();}catch(e){} }
+    },text:'コピー'});
+    var dlBtn=el('button',{'class':'tm-save',onclick:function(){
+      downloadJSON(function(r){
+        if(r==='shared'||r==='download') copyMsg.textContent='✓ 保存しました';
+        else if(r==='fail') copyMsg.textContent='× この端末では「コピー」をお使いください';
+      });
+    },text:'ファイルに保存／共有'});
+    exp.appendChild(el('div',{'class':'tm-backup-row'},[copyBtn,dlBtn]));
+    exp.appendChild(copyMsg);
+    page.appendChild(exp);
+
+    var imp=el('div',{'class':'tm-backup-sec'});
+    imp.appendChild(el('h3',{text:'読み込み（復元・統合）'}));
+    imp.appendChild(el('p',{'class':'tm-bulk-desc',text:'バックアップを貼り付けるか、ファイルを選んで読み込みます。同じ論点は上書きし、新しい論点は追加します（既存データは消えません）。'}));
+    var importArea=el('textarea',{'class':'tm-textarea tm-mono',rows:'6',placeholder:'ここにバックアップ（書き出した文字）を貼り付け'});
+    imp.appendChild(importArea);
+    var fileInput=el('input',{type:'file',accept:'application/json,.json,.txt',style:'margin-top:10px;font-size:13px'});
+    fileInput.addEventListener('change',function(){ var f=fileInput.files&&fileInput.files[0]; if(!f) return; var rd=new FileReader(); rd.onload=function(){ importArea.value=String(rd.result); }; rd.readAsText(f); });
+    imp.appendChild(fileInput);
+    var impMsg=el('div',{'class':'tm-split-msg',style:'display:none;margin-top:10px'});
+    imp.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){
+      var txt=importArea.value.trim(); if(!txt) return;
+      try{
+        var n=importData(txt); save();
+        impMsg.className='tm-split-msg'; impMsg.style.display=''; impMsg.textContent='✓ '+n+' 論点を読み込みました。ホームに戻ります…';
+        setTimeout(renderHome,800);
+      }catch(e){
+        impMsg.className='tm-split-msg err'; impMsg.style.display=''; impMsg.textContent='× 読み込めませんでした。バックアップの全文が正しく貼られているか確認してください。';
+      }
+    },text:'読み込む（統合）'}));
+    imp.appendChild(impMsg);
+    page.appendChild(imp);
+    show(page);
+  }
+
+  // init
+  load();
+  renderHome();
+})();
+
+</script>
+</body>
+</html>
