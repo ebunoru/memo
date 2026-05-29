@@ -272,10 +272,6 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       if(q && !/[?？]$/.test(q)) q=q+'は？';
       return {q:q,a:a};
     }).filter(function(x){return x.q||x.a;});
-    if(questions.length===0){
-      var paras=text.split(/\n\s*\n/).map(function(p){return p.trim();}).filter(Boolean);
-      questions=paras.map(function(p){return {q:'',a:buildAnswer(p.split('\n'))};});
-    }
     var whole=preamble.join('\n')+'\n'+text; var title=''; var tag='';
     var br=whole.match(/【([^】]+)】/); if(br) title=br[1].trim();
     var art=whole.match(/(?:民法|刑法|刑事訴訟法|刑訴|民事訴訟法|民訴|会社法|商法|憲法|行政法)?\s*第?\s*\d+\s*条(?:の\d+)?(?:\s*\d+\s*項)?/);
@@ -283,6 +279,12 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     if(!title && preamble.length){
       var p0=preamble[0].replace(/^#{1,6}\s*/,'').replace(/^\s*[\*\-•]\s+/,'').replace(/^\*\*|\*\*$/g,'').trim();
       if(p0 && p0.length<=30) title=p0;
+    }
+    if(questions.length===0){
+      var bodyLines=text.split('\n').filter(function(l){ return !/^\s*【[^】]+】\s*$/.test(l); });
+      var full=buildAnswer(bodyLines);
+      var base=title||'規範';
+      questions=[{q:base+'は？', a:full}];
     }
     if(!title && questions.length){
       var fq=questions[0].q.replace(/[はを]?[\?？]\s*$/,'').trim();
