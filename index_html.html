@@ -194,6 +194,18 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       .tm-backup-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
       .tm-backup-row .tm-save { flex:1; text-align:center; }
       .tm-mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:11px; line-height:1.5; }
+      .tm-structure { background:#eef2f7; border:1px solid #c8d5e4; border-radius:12px; padding:10px 12px; margin:10px 0 4px; text-align:left; }
+      .tm-structure-label { font-size:10.5px; letter-spacing:.12em; color: var(--blue); font-weight:700; margin-bottom:5px; }
+      .tm-structure-steps { display:flex; flex-wrap:wrap; align-items:center; gap:5px; }
+      .tm-structure-step { background:#fff; border:1px solid #c8d5e4; color: var(--blue); border-radius:999px; padding:3px 10px; font-size:12.5px; font-weight:700; }
+      .tm-structure-arrow { color:#8fa4bd; font-size:12px; }
+      .tm-mode-btns { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+      .tm-reveal-kw { background: var(--blue); color:#f3eddd; border-color: var(--blue); }
+      .tm-kw-box { background:#fffdf6; border-left:3px solid var(--blue); border-radius:0 8px 8px 0; padding:10px 14px; }
+      .tm-kw-label { font-size:11.5px; color: var(--ink-soft); font-weight:700; margin-bottom:6px; }
+      .tm-kw-list { margin:0; padding-left:20px; }
+      .tm-kw-list li { margin-bottom:8px; font-size:15px; }
+      .tm-kw-list li::marker { color: var(--blue); font-weight:700; }
       .tm-root { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
 </style>
 </head>
@@ -273,7 +285,13 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       if(q && !/[?？]$/.test(q)) q=q+'は？';
       return {q:q,a:a};
     }).filter(function(x){return x.q||x.a;});
-    var whole=preamble.join('\n')+'\n'+text; var title=''; var tag='';
+    var whole=preamble.join('\n')+'\n'+text; var title=''; var tag=''; var structure='';
+    var stm=whole.match(/(?:【\s*構造\s*】|構造\s*[:：])\s*(.+)/);
+    if(stm) structure=stm[1].trim();
+    if(!structure){
+      var arrowLine=whole.split('\n').filter(function(l){ return /(?:→|->).*(?:→|->)/.test(l) && l.length<=80; })[0];
+      if(arrowLine) structure=arrowLine.replace(/^[\s>*\-•#]+/,'').replace(/^《|》$/g,'').trim();
+    }
     var br=whole.match(/【([^】]+)】/); if(br) title=br[1].trim();
     var art=whole.match(/(?:民法|刑法|刑事訴訟法|刑訴|民事訴訟法|民訴|会社法|商法|憲法|行政法)?\s*第?\s*\d+\s*条(?:の\d+)?(?:\s*\d+\s*項)?/);
     if(!title && art) title=art[0].replace(/\s+/g,'');
@@ -293,7 +311,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     }
     var law=whole.match(/民法|刑事訴訟法|刑訴|刑法|民事訴訟法|民訴|会社法|商法|憲法|行政法/);
     if(law) tag = law[0]==='刑事訴訟法'?'刑訴':(law[0]==='民事訴訟法'?'民訴':law[0]);
-    return {title:title,tag:tag,questions:questions};
+    return {title:title,tag:tag,structure:structure,questions:questions};
   }
 
   function seedMemos(){
@@ -336,7 +354,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
   function saveMemo(memo){
     var exists=DATA.memos.some(function(m){return m.id===memo.id;});
     if(exists){
-      DATA.memos=DATA.memos.map(function(m){ return m.id===memo.id ? {id:m.id,createdAt:m.createdAt,title:memo.title,tag:memo.tag,questions:memo.questions} : m; });
+      DATA.memos=DATA.memos.map(function(m){ return m.id===memo.id ? {id:m.id,createdAt:m.createdAt,title:memo.title,tag:memo.tag,structure:memo.structure,questions:memo.questions} : m; });
     } else {
       memo.createdAt=todayStr();
       DATA.memos.unshift(memo);
@@ -392,7 +410,11 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     for(var i=0;i<count;i++) s.appendChild(el('span',{'class':'tm-ring'}));
     return s;
   }
-  function show(node){ var r=document.getElementById('app'); clear(r); r.appendChild(node); window.scrollTo(0,0); }
+  function show(node,keepScroll){
+    var y = keepScroll ? (window.pageYOffset||document.documentElement.scrollTop||0) : 0;
+    var r=document.getElementById('app'); clear(r); r.appendChild(node);
+    if(keepScroll){ window.scrollTo(0,y); } else { window.scrollTo(0,0); }
+  }
 
   // ---- Home ----
   function renderHome(){
@@ -459,7 +481,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
 
   // ---- Editor ----
   function renderEditor(initial){
-    var st={ title: initial?initial.title:'', tag: initial?initial.tag:'',
+    var st={ title: initial?initial.title:'', tag: initial?initial.tag:'', structure: (initial&&initial.structure)?initial.structure:'',
       qs: initial && initial.questions.length ? initial.questions.map(function(q){return {id:q.id,q:q.q,a:q.a,level:q.level,nextReview:q.nextReview,history:q.history};}) : [{id:uid(),q:'',a:''}],
       showBulk: !initial };
     var page=el('div',{'class':'tm-page'});
@@ -476,7 +498,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
         var fq=cleaned[0].q.replace(/[はを]?[\?？]\s*$/,'').trim();
         title = fq ? Array.from(fq).slice(0,24).join('') : '無題の論点';
       }
-      saveMemo({ id: initial?initial.id:uid(), title:title, tag:st.tag.trim(), questions:cleaned });
+      saveMemo({ id: initial?initial.id:uid(), title:title, tag:st.tag.trim(), structure:st.structure.trim(), questions:cleaned });
       renderHome();
     }
     saveBtn=el('button',{'class':'tm-save',onclick:doSave,text:'保存'});
@@ -488,7 +510,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     var form=el('div',{'class':'tm-form'}); page.appendChild(form);
 
     var msgEl=el('div',{'class':'tm-split-msg',style:'display:none'});
-    var titleInput, tagInput, qContainer;
+    var titleInput, tagInput, structInput, qContainer;
 
     var bulkArea=el('textarea',{'class':'tm-textarea tm-bulk-area',rows:'7',placeholder:'ここに論証をそのまま貼り付け\n\n### 1. ○○の趣旨\n> …規範…\n\n### 2. △△の要件\n> …規範…'});
     var bulkWrap=el('div');
@@ -516,6 +538,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       if(!parsed.questions.length){ setMsg('× うまく分割できませんでした。見出し（### や 1.）や「〜は？」を手がかりにします。',true); return; }
       if(parsed.title && !st.title.trim()){ st.title=parsed.title; titleInput.value=parsed.title; }
       if(parsed.tag && !st.tag.trim()){ st.tag=parsed.tag; tagInput.value=parsed.tag; }
+      if(parsed.structure && !st.structure.trim()){ st.structure=parsed.structure; if(structInput) structInput.value=parsed.structure; }
       var fresh=parsed.questions.map(function(q){ return {id:uid(),q:q.q,a:q.a,level:0,nextReview:todayStr(),history:[]}; });
       var allEmpty=st.qs.every(function(q){return !q.q.trim() && !q.a.trim();});
       st.qs = allEmpty ? fresh : st.qs.concat(fresh);
@@ -535,6 +558,10 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     tagInput=el('input',{'class':'tm-input',placeholder:'例）刑訴 / 民法',value:st.tag});
     tagInput.addEventListener('input',function(){ st.tag=tagInput.value; });
     form.appendChild(el('label',{'class':'tm-field'},[ el('span',{'class':'tm-label',text:'科目・分野（任意）'}), tagInput ]));
+
+    structInput=el('input',{'class':'tm-input',placeholder:'例）原則 → 不都合 → 修正 → 限界',value:st.structure});
+    structInput.addEventListener('input',function(){ st.structure=structInput.value; });
+    form.appendChild(el('label',{'class':'tm-field'},[ el('span',{'class':'tm-label',text:'論点構造（→でつなぐ・任意）'}), structInput ]));
 
     var hint=el('div',{'class':'tm-hint-box'});
     appendC(hint,['自動分割した内容は下でそのまま編集できます。覚えたい語を ', el('strong',null,'「 」'), '（または ', el('code',null,'**…**'), '）で囲むと', el('strong',null,'穴埋め'), 'になります。']);
@@ -594,6 +621,17 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       el('span',{text:'次回 '+fmtJP(earliestNext(m))+'（'+dueLabel(earliestNext(m))+'）'}),
       el('span',{text:'問い '+m.questions.length})
     ]));
+    if(m.structure){
+      var dst=el('div',{'class':'tm-structure'});
+      dst.appendChild(el('div',{'class':'tm-structure-label',text:'論点構造'}));
+      var dline=el('div',{'class':'tm-structure-steps'});
+      m.structure.split(/\s*(?:→|->|＞|>)\s*/).filter(Boolean).forEach(function(x,xi){
+        if(xi>0) dline.appendChild(el('span',{'class':'tm-structure-arrow',text:'→'}));
+        dline.appendChild(el('span',{'class':'tm-structure-step',text:x}));
+      });
+      dst.appendChild(dline);
+      card.appendChild(dst);
+    }
     var ol=el('ol',{'class':'tm-detail-qs'});
     m.questions.forEach(function(q){
       var li=el('li');
@@ -627,10 +665,10 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
   var rs;
   function startRecall(ids){
     var memos=ids.map(function(id){ return DATA.memos.filter(function(m){return m.id===id;})[0]; }).filter(Boolean);
-    rs={ memos:memos, idx:0, opened:{}, cloze:{}, graded:{}, totalDone:0 };
+    rs={ memos:memos, idx:0, opened:{}, cloze:{}, graded:{}, mode:{}, totalDone:0 };
     renderRecall();
   }
-  function renderRecall(){
+  function renderRecall(keepScroll){
     if(!rs.memos.length){ show(finish('想起する論点がありません','',true)); return; }
     if(rs.idx>=rs.memos.length){ show(finish('想起、おつかれさまでした', rs.totalDone+' 問を照合しました。ズレた問いは近いうちに再出題されます。',false)); return; }
     var memo=rs.memos[rs.idx];
@@ -648,14 +686,66 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     card.appendChild(spiral(9));
     if(memo.tag) card.appendChild(el('span',{'class':'tm-chip tm-chip-center',text:memo.tag}));
     card.appendChild(el('h2',{'class':'tm-recall-title',text:memo.title}));
-    card.appendChild(el('p',{'class':'tm-recall-instruction',text:'テキストを開かず、頭の中で規範を引き出してから「答えを開く」'}));
+    if(memo.structure){
+      var steps=memo.structure.split(/\s*(?:→|->|＞|>)\s*/).filter(Boolean);
+      var stWrap=el('div',{'class':'tm-structure'});
+      stWrap.appendChild(el('div',{'class':'tm-structure-label',text:'論点構造'}));
+      var stLine=el('div',{'class':'tm-structure-steps'});
+      steps.forEach(function(s,si){
+        if(si>0) stLine.appendChild(el('span',{'class':'tm-structure-arrow',text:'→'}));
+        stLine.appendChild(el('span',{'class':'tm-structure-step',text:s}));
+      });
+      stWrap.appendChild(stLine);
+      card.appendChild(stWrap);
+    }
+    card.appendChild(el('p',{'class':'tm-recall-instruction',text:'構造を手がかりに、自分の言葉で組み立ててから開く'}));
     var qsWrap=el('div',{'class':'tm-recall-qs'});
     qs.forEach(function(q,i){
-      var tokens=parseTokens(q.a||''); var isOpen=rs.opened[q.id]; var g=rs.graded[q.id];
+      var tokens=parseTokens(q.a||''); var g=rs.graded[q.id];
+      var mode=rs.mode[q.id]||'closed';
+      var blankIdx=[]; tokens.forEach(function(t,ti){ if(t.type==='blank') blankIdx.push(ti); });
       var qb=el('div',{'class':'tm-recall-q'+(g?(' graded g-'+g):'')});
       qb.appendChild(el('div',{'class':'tm-recall-qline'},[ el('span',{'class':'tm-recall-qmark',text:'Q'+(i+1)}), el('span',{'class':'tm-recall-qtext',text:q.q}) ]));
-      if(!isOpen){
-        qb.appendChild(el('button',{'class':'tm-reveal',onclick:function(){ rs.opened[q.id]=true; renderRecall(); },text:'答えを開く'}));
+
+      function revealNext(){
+        for(var k=0;k<blankIdx.length;k++){
+          var key=q.id+':'+blankIdx[k];
+          if(!rs.cloze[key]){ rs.cloze[key]=true; break; }
+        }
+        renderRecall(true);
+      }
+      function revealAll(){ blankIdx.forEach(function(ti){ rs.cloze[q.id+':'+ti]=true; }); renderRecall(true); }
+      function remaining(){ var n=0; blankIdx.forEach(function(ti){ if(!rs.cloze[q.id+':'+ti]) n++; }); return n; }
+
+      if(mode==='closed'){
+        var btns=el('div',{'class':'tm-mode-btns'});
+        if(blankIdx.length>0){
+          btns.appendChild(el('button',{'class':'tm-reveal tm-reveal-kw',onclick:function(){ rs.mode[q.id]='keywords'; renderRecall(true); },text:'キーワードだけ見る'}));
+        }
+        btns.appendChild(el('button',{'class':'tm-reveal',onclick:function(){ rs.mode[q.id]='full'; renderRecall(true); },text:'答え全文を開く'}));
+        qb.appendChild(btns);
+      } else if(mode==='keywords'){
+        var kwBox=el('div',{'class':'tm-kw-box'});
+        kwBox.appendChild(el('div',{'class':'tm-kw-label',text:'このキーワードを繋いで、自分の言葉で組み立てる'}));
+        var list=el('ol',{'class':'tm-kw-list'});
+        blankIdx.forEach(function(ti){
+          var li=el('li');
+          if(rs.cloze[q.id+':'+ti]){ li.appendChild(el('strong',{'class':'tm-cloze-on',text:tokens[ti].value})); }
+          else {
+            var len2=Math.min(Math.max(Array.from(tokens[ti].value).length,2),6);
+            li.appendChild(el('button',{'class':'tm-cloze',onclick:(function(key){return function(){ rs.cloze[key]=true; renderRecall(true); };})(q.id+':'+ti),text:Array(len2+1).join('⬚')}));
+          }
+          list.appendChild(li);
+        });
+        kwBox.appendChild(list);
+        qb.appendChild(kwBox);
+        var kwBtns=el('div',{'class':'tm-mode-btns'});
+        if(remaining()>0){
+          kwBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:revealNext,text:'次の1つ ('+remaining()+')'}));
+          kwBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:revealAll,text:'全部表示'}));
+        }
+        kwBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ rs.mode[q.id]='full'; renderRecall(true); },text:'答え全文と照合'}));
+        qb.appendChild(kwBtns);
       } else {
         var ans=el('div',{'class':'tm-recall-answer'});
         tokens.forEach(function(t,ti){
@@ -666,14 +756,20 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
             ans.appendChild(el('strong',{'class':'tm-cloze-on',text:t.value}));
           } else {
             var len=Math.min(Math.max(Array.from(t.value).length,2),6);
-            ans.appendChild(el('button',{'class':'tm-cloze',onclick:(function(key){return function(){ rs.cloze[key]=true; renderRecall(); };})(q.id+':'+ti),text:Array(len+1).join('⬚')}));
+            ans.appendChild(el('button',{'class':'tm-cloze',onclick:(function(key){return function(){ rs.cloze[key]=true; renderRecall(true); };})(q.id+':'+ti),text:Array(len+1).join('⬚')}));
           }
           if(cb) ans.appendChild(document.createTextNode(cb));
         });
         qb.appendChild(ans);
-        if(countBlanks(q.a)>0 && !g){
-          qb.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ tokens.forEach(function(t,ti){ if(t.type==='blank') rs.cloze[q.id+':'+ti]=true; }); renderRecall(); },text:'キーワードを全部表示'}));
+        if(blankIdx.length>0 && !g && remaining()>0){
+          var fullBtns=el('div',{'class':'tm-mode-btns'});
+          fullBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:revealNext,text:'次の1つ ('+remaining()+')'}));
+          fullBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:revealAll,text:'キーワードを全部表示'}));
+          qb.appendChild(fullBtns);
         }
+      }
+
+      if(mode!=='closed'){
         if(!g){
           qb.appendChild(el('div',{'class':'tm-qgrade'},[
             el('span',{'class':'tm-qgrade-label',text:'この問いは？'}),
@@ -693,15 +789,15 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     card.appendChild(qsWrap);
     wrap.appendChild(card);
     if(allGraded){
-      wrap.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){ rs.opened={}; rs.cloze={}; rs.graded={}; rs.idx+=1; renderRecall(); },text: (rs.idx+1<rs.memos.length)?'次の論点へ →':'想起を完了する ✓'}));
+      wrap.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){ rs.opened={}; rs.cloze={}; rs.graded={}; rs.mode={}; rs.idx+=1; renderRecall(); },text: (rs.idx+1<rs.memos.length)?'次の論点へ →':'想起を完了する ✓'}));
     }
-    show(wrap);
+    show(wrap,keepScroll);
   }
   function gradeBtn(memo,q,grade,label){
     return el('button',{'class':'tm-qg '+grade,onclick:function(){
       gradeQuestion(memo.id,q.id,grade); rs.graded[q.id]=grade; rs.totalDone+=1;
       var toks=parseTokens(q.a||''); toks.forEach(function(t,ti){ if(t.type==='blank') rs.cloze[q.id+':'+ti]=true; });
-      renderRecall();
+      renderRecall(true);
     },text:label});
   }
   function finish(title,desc,empty){
