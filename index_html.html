@@ -45,6 +45,8 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       .tm-due-count { font-size:24px; margin:4px 0 16px; font-weight:500; }
       .tm-due-count strong { font-size:34px; font-family:'Klee One',cursive; color:#ffd98a; margin-right:4px; }
       .tm-due-empty { font-size:14px; opacity:.9; margin:6px 0 0; }
+      .tm-due-note { font-size:12px; opacity:.9; margin:0 0 12px; background:rgba(255,255,255,.12); padding:7px 10px; border-radius:8px; }
+      .tm-btn-ghost { width:100%; margin-top:10px; background:none; border:1px solid rgba(255,255,255,.5); color:#f6f1e4; border-radius:12px; padding:11px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; }
 
       .tm-btn-primary { width:100%; border:none; cursor:pointer; background: var(--red); color:#fff7ec; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:16px; padding:15px; border-radius:14px; letter-spacing:.03em; box-shadow:0 6px 16px rgba(181,64,47,.4); transition: transform .12s ease, box-shadow .12s ease; }
       .tm-btn-primary:active { transform: translateY(2px); box-shadow:0 3px 8px rgba(181,64,47,.4); }
@@ -177,6 +179,11 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       .tm-qg.fail { background:#8a8275; }
       .tm-qg.vague { background: var(--gold); }
       .tm-qg.good { background: var(--red); }
+      .tm-qg.easy { background:#3f6b8a; }
+      .tm-qgrade-btns.tm-g4 { grid-template-columns: repeat(4,1fr); gap:6px; }
+      .tm-qgrade-btns.tm-g4 .tm-qg { padding:9px 2px; font-size:11.5px; }
+      .tm-qg-iv { display:block; font-size:9.5px; opacity:.85; margin-top:2px; }
+      .tm-qresult.r-easy { background:#e8eef3; color:#33566e; }
       .tm-qresult { margin-top:12px; font-size:12.5px; font-weight:700; padding:8px 12px; border-radius:8px; }
       .tm-qresult.r-good { background:#fbeae2; color: var(--red); }
       .tm-qresult.r-vague { background:#fbf2dc; color:#8a6a1e; }
@@ -191,9 +198,64 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       .tm-backup-link { display:block; margin:16px auto 0; background:none; border:none; color: var(--blue); font-size:13px; text-decoration:underline; cursor:pointer; font-family:inherit; }
       .tm-backup-sec { background: var(--paper-2); border:1px solid var(--rule); border-radius:14px; padding:16px; margin-bottom:16px; box-shadow:0 2px 6px rgba(60,45,20,.06); }
       .tm-backup-sec h3 { font-family:'Shippori Mincho',serif; font-size:16px; margin:0 0 8px; border-left:4px solid var(--gold); padding-left:10px; }
+      .tm-bar { display:flex; height:16px; border-radius:999px; overflow:hidden; background:#e8e2d2; margin:6px 0 10px; }
+      .tm-bar-seg { height:100%; }
+      .tm-legend { display:flex; flex-wrap:wrap; gap:10px; font-size:11.5px; color: var(--ink-soft); }
+      .tm-legend-item { display:flex; align-items:center; gap:4px; }
+      .tm-legend-dot { width:9px; height:9px; border-radius:50%; display:inline-block; }
+      .tm-chart { display:flex; align-items:flex-end; justify-content:space-between; gap:5px; height:110px; padding-top:6px; }
+      .tm-chart-col { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; gap:3px; }
+      .tm-chart-num { font-size:10px; color: var(--ink-soft); }
+      .tm-chart-bar { width:100%; background: var(--blue); border-radius:4px 4px 0 0; }
+      .tm-chart-bar.hist { background: var(--gold); }
+      .tm-chart-bar.today { background: var(--red); }
+      .tm-chart-lab { font-size:9.5px; color: var(--ink-soft); }
+      .tm-weak-list { margin:0; padding-left:18px; }
+      .tm-weak-list li { font-size:13px; color: var(--ink-soft); margin-bottom:5px; }
+      .tm-limit-row { display:flex; gap:8px; flex-wrap:wrap; }
+      .tm-limit-btn { flex:1; background:#efe7d2; border:1px solid var(--rule); color: var(--ink-soft); border-radius:10px; padding:10px 4px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; }
+      .tm-limit-btn.on { background: var(--blue); color:#f3eddd; border-color: var(--blue); }
       .tm-backup-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
       .tm-backup-row .tm-save { flex:1; text-align:center; }
       .tm-mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size:11px; line-height:1.5; }
+      .tm-train-btn { background:#eef2f7; border:1px solid #c8d5e4; color: var(--blue); border-radius:9px; padding:8px 13px; font-size:12.5px; font-weight:700; cursor:pointer; font-family:inherit; }
+      .tm-train-btn:active { background: var(--blue); color:#fff; }
+      .tm-step-box { margin-top:10px; background:#f7f4ea; border:1px solid var(--rule); border-radius:12px; padding:12px; }
+      .tm-step-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+      .tm-step-count { font-size:11.5px; font-weight:700; color: var(--blue); }
+      .tm-step-hint { font-size:11px; color: var(--ink-soft); }
+      .tm-step-done { margin-bottom:8px; opacity:.75; }
+      .tm-step-text { font-size:13px; color: var(--ink-soft); margin-top:3px; padding-left:6px; border-left:2px solid var(--rule); white-space:pre-wrap; }
+      .tm-step-current { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+      .tm-step-badge { border-radius:999px; padding:4px 12px; font-size:13px; font-weight:700; }
+      .tm-step-badge.now { background: var(--red); color:#fff; }
+      .tm-step-badge.done { background:#fff; border:1px solid var(--rule); color: var(--ink-soft); font-size:12px; }
+      .tm-step-ask { font-size:14px; font-weight:700; }
+      .tm-order-box { margin-top:10px; background:#f7f4ea; border:1px solid var(--rule); border-radius:12px; padding:12px; }
+      .tm-order-slots { display:flex; flex-wrap:wrap; align-items:center; gap:5px; min-height:38px; background:#fff; border:1px dashed var(--rule); border-radius:10px; padding:8px; margin-bottom:10px; }
+      .tm-order-empty { font-size:12px; color: var(--ink-soft); }
+      .tm-order-pool { display:flex; flex-wrap:wrap; gap:7px; }
+      .tm-order-chip { background:#fff; border:1.5px solid var(--blue); color: var(--blue); border-radius:999px; padding:7px 13px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; }
+      .tm-order-chip.placed { background: var(--blue); color:#f3eddd; border-color: var(--blue); cursor:default; }
+      .tm-order-msg { margin:8px 0; font-size:12.5px; padding:7px 11px; border-radius:8px; font-weight:700; }
+      .tm-order-msg.err { background:#fbeee9; color: var(--red); }
+      .tm-order-msg.ok { background:#eef4ea; color:#3f6b2e; }
+      .tm-compose { margin-top:10px; }
+      .tm-compose-label { font-size:11.5px; color: var(--ink-soft); font-weight:700; margin-bottom:6px; }
+      .tm-compose-area { background:#fff; font-size:14.5px; line-height:1.8; }
+      .tm-prev-btn { margin-top:8px; background:none; border:1px dashed var(--rule); color: var(--ink-soft); border-radius:8px; padding:6px 12px; font-size:12px; cursor:pointer; font-family:inherit; }
+      .tm-prev-draft, .tm-mydraft { margin-top:10px; background:#f4f1e8; border-left:3px solid #9a937f; border-radius:0 8px 8px 0; padding:8px 12px; }
+      .tm-prev-label { font-size:10.5px; letter-spacing:.1em; color: var(--ink-soft); font-weight:700; margin-bottom:4px; }
+      .tm-prev-body { font-size:13.5px; line-height:1.8; white-space:pre-wrap; color: var(--ink); }
+      .tm-score { border-radius:10px; padding:8px 12px; margin-bottom:10px; font-size:13px; }
+      .tm-score strong { font-size:17px; font-family:'Klee One',cursive; }
+      .tm-score.s-good { background:#fbeae2; color: var(--red); }
+      .tm-score.s-mid { background:#fbf2dc; color:#8a6a1e; }
+      .tm-score.s-low { background:#ecebe6; color:#6a655c; }
+      .tm-kw-mark { display:inline-block; width:18px; font-weight:700; }
+      .tm-kw-mark.hit { color:#3f8a3f; }
+      .tm-kw-mark.miss { color: var(--red); }
+      .tm-cloze-on.tm-miss { background:#fbe2e2; text-decoration:underline; text-decoration-color: var(--red); }
       .tm-structure { background:#eef2f7; border:1px solid #c8d5e4; border-radius:12px; padding:10px 12px; margin:10px 0 4px; text-align:left; }
       .tm-structure-label { font-size:10.5px; letter-spacing:.12em; color: var(--blue); font-weight:700; margin-bottom:5px; }
       .tm-structure-steps { display:flex; flex-wrap:wrap; align-items:center; gap:5px; }
@@ -229,10 +291,87 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
   function memoLevel(m){ if(!m.questions.length) return 0; return Math.min.apply(null,m.questions.map(function(q){return q.level||0;})); }
   function dueLabel(date){ var t=todayStr(); if(isDueDate(date)) return '今すぐ'; if(date===addDays(t,1)) return '明日'; var diff=Math.round((new Date(date)-new Date(t))/86400000); return diff+'日後'; }
   function uid(){ return Math.random().toString(36).slice(2,10)+Date.now().toString(36); }
-  function nextSchedule(level,grade){
-    if(grade==='good'){ var l=Math.min((level||0)+1,MAX_LEVEL); return {level:l,nextReview:addDays(todayStr(),INTERVALS[l])}; }
-    if(grade==='vague'){ return {level:level||0,nextReview:addDays(todayStr(),1)}; }
-    return {level:0,nextReview:todayStr()};
+  // ===== FSRS風スケジューラ =====
+  // 各問いに「安定度(stability=何日もつか)」と「難易度(difficulty 1-10)」を持たせ、
+  // 評価履歴からその問い固有の忘却曲線に合わせて次回日を決める。
+  var TARGET_RETENTION = 0.90; // 高難度試験向け（0.9=90%の確率で思い出せる日に出す）
+  var GRADE_NUM = { fail:1, vague:2, good:3, easy:4 };
+
+  function daysBetween(a,b){ return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000); }
+  function clamp(v,lo,hi){ return Math.max(lo,Math.min(hi,v)); }
+
+  // 初回：評価に応じた初期安定度（日）
+  function initStability(gn){ return [0,0.4,1.0,3.0,7.0][gn] || 1.0; }
+  function initDifficulty(gn){ return clamp(6.0 - (gn-3)*1.2, 1, 10); }
+
+  // 復習後の難易度更新（できなければ難しく、楽なら易しく）
+  function nextDifficulty(d,gn){
+    var nd = d - 1.0*(gn-3);
+    nd = nd + 0.1*(5.0-nd)*0; // 平均回帰は控えめに省略
+    return clamp(nd,1,10);
+  }
+
+  // 復習後の安定度更新
+  function nextStability(st,d,gn,elapsed,retrievability){
+    if(gn===1){
+      // 失敗：安定度は大きく下がるが、ゼロには戻さない（Ankiのlapse相当）
+      return clamp(st*0.35*(1 - (d-5)*0.04), 0.4, 60);
+    }
+    var easeBonus = (gn===4)?1.35:(gn===3?1.0:0.75);
+    var difFactor = (11 - d)/6;           // 難しいほど伸びにくい
+    var retFactor = 1 + (1 - retrievability)*1.6; // 忘れかけで正解したほど大きく伸びる
+    var grow = 1 + difFactor*retFactor*0.9*easeBonus;
+    var ns = st*grow;
+    if(elapsed>0) ns = Math.max(ns, elapsed*1.05); // 実際にもった日数は下回らない
+    return clamp(ns, 0.4, 3650);
+  }
+
+  // 経過日数と安定度から「思い出せる確率」
+  function retrievability(elapsed,st){
+    if(!st||st<=0) return 0;
+    return Math.pow(1 + elapsed/(9*st), -1);
+  }
+
+  // 目標記憶率に達する日数＝次の間隔
+  function intervalFor(st){
+    var days = 9*st*(1/TARGET_RETENTION - 1);
+    return Math.max(1, Math.round(days));
+  }
+
+  // 問いの状態から次回スケジュールを計算
+  function nextSchedule(q,grade){
+    var gn = GRADE_NUM[grade]||3;
+    var st = q.stability, d = q.difficulty;
+    var last = q.lastReview || null;
+    var elapsed = last ? Math.max(0, daysBetween(last, todayStr())) : 0;
+
+    if(!st || !d){ // 初回
+      st = initStability(gn); d = initDifficulty(gn);
+    } else {
+      var r = retrievability(elapsed, st);
+      d = nextDifficulty(d, gn);
+      st = nextStability(st, d, gn, elapsed, r);
+    }
+    var iv = (gn===1) ? 0 : intervalFor(st); // 失敗は当日中に再出題
+    return {
+      stability: Math.round(st*100)/100,
+      difficulty: Math.round(d*100)/100,
+      level: clamp(Math.round(Math.log2(Math.max(st,0.5))+1), 0, MAX_LEVEL),
+      lastReview: todayStr(),
+      nextReview: addDays(todayStr(), iv),
+      interval: iv
+    };
+  }
+
+  // ボタンに「次はいつ出るか」を表示するための予測
+  function previewInterval(q,grade){
+    var sc = nextSchedule(q,grade);
+    var iv = sc.interval;
+    if(iv<=0) return '今日中';
+    if(iv===1) return '明日';
+    if(iv<30) return iv+'日後';
+    if(iv<365) return Math.round(iv/30)+'ヶ月後';
+    return (Math.round(iv/36.5)/10)+'年後';
   }
   function parseTokens(text){
     var parts=[]; text=text||''; var re=/\*\*([\s\S]+?)\*\*|「([^」]+?)」/g; var last=0; var m;
@@ -331,7 +470,7 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       ])}
     ];
   }
-  function defaultData(){ return {memos:seedMemos(), stats:{totalRecalls:0,totalGood:0,lastStudyDate:null,streak:0}}; }
+  function defaultData(){ return {memos:seedMemos(), stats:{totalRecalls:0,totalGood:0,lastStudyDate:null,streak:0,daily:{}}, settings:{dailyLimit:40}}; }
   function migrate(data){
     if(!data||!data.memos) return defaultData();
     data.memos=data.memos.map(function(m){
@@ -343,7 +482,9 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       });
       return m;
     });
-    if(!data.stats) data.stats={totalRecalls:0,totalGood:0,lastStudyDate:null,streak:0};
+    if(!data.stats) data.stats={totalRecalls:0,totalGood:0,lastStudyDate:null,streak:0,daily:{}};
+    if(!data.stats.daily) data.stats.daily={};
+    if(!data.settings) data.settings={dailyLimit:40};
     return data;
   }
 
@@ -367,13 +508,17 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       if(m.id!==memoId) return;
       m.questions.forEach(function(q){
         if(q.id!==qId) return;
-        var s=nextSchedule(q.level,grade); q.level=s.level; q.nextReview=s.nextReview;
-        q.history=[{date:todayStr(),grade:grade}].concat(q.history||[]).slice(0,40);
+        var s=nextSchedule(q,grade);
+        q.level=s.level; q.nextReview=s.nextReview;
+        q.stability=s.stability; q.difficulty=s.difficulty; q.lastReview=s.lastReview; q.interval=s.interval;
+        q.history=[{date:todayStr(),grade:grade,iv:s.interval}].concat(q.history||[]).slice(0,60);
       });
     });
-    var st=DATA.stats; st.totalRecalls+=1; if(grade==='good') st.totalGood+=1;
+    var st=DATA.stats; st.totalRecalls+=1; if(grade==='good'||grade==='easy') st.totalGood+=1;
     var t=todayStr();
     if(st.lastStudyDate!==t){ st.streak = (st.lastStudyDate===addDays(t,-1)) ? st.streak+1 : 1; st.lastStudyDate=t; }
+    st.daily = st.daily || {};
+    st.daily[t] = (st.daily[t]||0) + 1;
     save();
   }
 
@@ -425,13 +570,29 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       el('div',null,[ el('h1',{'class':'tm-logo',text:'トリガーメモ'}), el('p',{'class':'tm-sub',text:'想起で規範を定着させる'}) ]),
       el('div',{'class':'tm-streak'},[ el('span',{'class':'tm-streak-num',text:String(st.streak)}), el('span',{'class':'tm-streak-label',text:'日連続'}) ])
     ]));
+    var limit=(DATA.settings&&DATA.settings.dailyLimit)||40;
+    var doneToday=(st.daily&&st.daily[todayStr()])||0;
+    var budget=Math.max(0, limit-doneToday);
+    var dueQCount=0; due.forEach(function(m){ dueQCount+=m.questions.filter(isDueQ).length; });
+    var plan=planToday(due,budget);
+    var overdueCount=0;
+    due.forEach(function(m){ m.questions.forEach(function(q){ if(isDueQ(q) && q.nextReview && q.nextReview<todayStr()) overdueCount++; }); });
+
     var dueCard=el('section',{'class':'tm-due-card'});
     dueCard.appendChild(el('div',{'class':'tm-due-top'},[
       el('span',{'class':'tm-due-kicker',text:'起床後の想起'}),
-      el('h2',{'class':'tm-due-count'}, due.length>0 ? [ el('strong',{text:String(due.length)}), ' 論点の復習' ] : '今日の分は完了')
+      el('h2',{'class':'tm-due-count'}, dueQCount>0 ? [ el('strong',{text:String(Math.min(dueQCount,budget))}), ' 問の復習' ] : '今日の分は完了')
     ]));
-    if(due.length>0){
-      dueCard.appendChild(el('button',{'class':'tm-btn-primary',onclick:function(){ startRecall(due.map(function(m){return m.id;})); },text:'何も見ずに思い出す →'}));
+    if(dueQCount>0 && budget>0){
+      if(dueQCount>budget){
+        dueCard.appendChild(el('p',{'class':'tm-due-note',text:'期限切れ '+overdueCount+' 問を優先。残り '+(dueQCount-budget)+' 問は明日以降に回します（1日の上限 '+limit+' 問）'}));
+      } else if(overdueCount>0){
+        dueCard.appendChild(el('p',{'class':'tm-due-note',text:'うち期限切れ '+overdueCount+' 問（古いものから出題）'}));
+      }
+      dueCard.appendChild(el('button',{'class':'tm-btn-primary',onclick:function(){ startRecall(plan.memoIds, plan.qIds); },text:'何も見ずに思い出す →'}));
+    } else if(dueQCount>0 && budget<=0){
+      dueCard.appendChild(el('p',{'class':'tm-due-empty',text:'今日の上限（'+limit+'問）を達成しました。残り '+dueQCount+' 問は明日に回します。'}));
+      dueCard.appendChild(el('button',{'class':'tm-btn-ghost',onclick:function(){ var all=planToday(due,9999); startRecall(all.memoIds, all.qIds); },text:'それでも続ける'}));
     } else {
       dueCard.appendChild(el('p',{'class':'tm-due-empty',text:'よく寝て、また明日。新しい論点を準備しておきましょう。'}));
     }
@@ -452,9 +613,27 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     var cards=el('div',{'class':'tm-cards'});
     memos.slice().sort(function(a,b){ return earliestNext(a).localeCompare(earliestNext(b)); }).forEach(function(m){ cards.appendChild(memoCard(m)); });
     page.appendChild(cards);
-    page.appendChild(el('p',{'class':'tm-footnote',text:'前夜に問いを準備 → 翌朝テキストを開かず想起 → 答えと照合。ズレた問いだけが翌日に再浮上します。'}));
-    page.appendChild(el('button',{'class':'tm-backup-link',onclick:renderBackup,text:'⚙ バックアップ（書き出し・読み込み）'}));
+    page.appendChild(el('p',{'class':'tm-footnote',text:'評価に応じて次回の出題日が自動調整されます（できた問いは間隔が伸び、つまずいた問いは何度も戻ってきます）。'}));
+    page.appendChild(el('button',{'class':'tm-backup-link',onclick:renderStats,text:'📊 学習統計・定着グラフ'}));
+    page.appendChild(el('button',{'class':'tm-backup-link',onclick:renderBackup,text:'⚙ バックアップ・設定'}));
     show(page);
+  }
+  // 期限切れ（古い順）を優先し、1日の上限内に収める出題計画
+  function planToday(dueMemos,budget){
+    var items=[];
+    dueMemos.forEach(function(m){
+      m.questions.forEach(function(q){
+        if(isDueQ(q)) items.push({m:m,q:q,due:q.nextReview||'0000-01-01'});
+      });
+    });
+    items.sort(function(a,b){ return a.due.localeCompare(b.due); }); // 古い期限から
+    var picked=items.slice(0,budget);
+    var qIds={}, memoIds=[];
+    picked.forEach(function(it){
+      qIds[it.q.id]=true;
+      if(memoIds.indexOf(it.m.id)<0) memoIds.push(it.m.id);
+    });
+    return {memoIds:memoIds, qIds:qIds, total:items.length, picked:picked.length};
   }
   function stat(label,value){ return el('div',{'class':'tm-stat'},[ el('div',{'class':'tm-stat-val',text:String(value)}), el('div',{'class':'tm-stat-lab',text:label}) ]); }
   function memoCard(m){
@@ -663,16 +842,65 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
 
   // ---- Recall ----
   var rs;
-  function startRecall(ids){
+  function startRecall(ids,qFilter){
     var memos=ids.map(function(id){ return DATA.memos.filter(function(m){return m.id===id;})[0]; }).filter(Boolean);
-    rs={ memos:memos, idx:0, opened:{}, cloze:{}, graded:{}, mode:{}, totalDone:0 };
+    rs={ memos:memos, idx:0, opened:{}, cloze:{}, graded:{}, mode:{}, draft:{}, showPrev:{}, step:{}, stepDraft:{}, order:{}, qFilter:qFilter||null, totalDone:0 };
     renderRecall();
+  }
+  function normJP(t){
+    return String(t||'')
+      .replace(/[\s\u3000]/g,'')
+      .replace(/[、。，．,\.「」『』（）\(\)]/g,'')
+      .replace(/[ａ-ｚＡ-Ｚ０-９]/g,function(c){ return String.fromCharCode(c.charCodeAt(0)-0xFEE0); })
+      .toLowerCase();
+  }
+  function kwHit(draft,kw){
+    var d=normJP(draft), k=normJP(kw);
+    if(!d||!k) return false;
+    if(d.indexOf(k)>=0) return true;
+    // 長いフレーズは、読点区切りの断片が半分以上あれば「使えた」とみなす
+    var segs=String(kw).split(/[、，,]/).map(normJP).filter(function(x){return x.length>=3;});
+    if(segs.length>=2){
+      var hit=0;
+      segs.forEach(function(sg){
+        if(d.indexOf(sg)>=0) hit++;
+        else { var c=sg.slice(0,Math.max(3,Math.floor(sg.length*0.7))); if(d.indexOf(c)>=0) hit++; }
+      });
+      if(hit/segs.length>=0.5) return true;
+    }
+    // 括弧内の条文番号を除いた本体で判定（例：「訴因変更手続（312条1項）」→「訴因変更手続」）
+    var head=normJP(String(kw).replace(/[（(][^）)]*[）)]/g,''));
+    if(head.length>=3 && d.indexOf(head)>=0) return true;
+    // 語尾の揺れを許容（例：「明示され」→「明示」）
+    if(k.length>=4){
+      var core=k.slice(0,Math.max(3,Math.floor(k.length*0.7)));
+      if(d.indexOf(core)>=0) return true;
+    }
+    return false;
+  }
+  function saveDraft(memoId,qId,text){
+    DATA.memos.forEach(function(m){
+      if(m.id!==memoId) return;
+      m.questions.forEach(function(q){
+        if(q.id!==qId) return;
+        q.draft=text; q.draftDate=todayStr();
+      });
+    });
+    save();
+  }
+  function shuffleIdx(arr){
+    var a=arr.slice();
+    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; }
+    return a;
   }
   function renderRecall(keepScroll){
     if(!rs.memos.length){ show(finish('想起する論点がありません','',true)); return; }
     if(rs.idx>=rs.memos.length){ show(finish('想起、おつかれさまでした', rs.totalDone+' 問を照合しました。ズレた問いは近いうちに再出題されます。',false)); return; }
     var memo=rs.memos[rs.idx];
-    var dueQs=memo.questions.filter(isDueQ);
+    var dueQs=memo.questions.filter(function(q){
+      if(rs.qFilter) return !!rs.qFilter[q.id];
+      return isDueQ(q);
+    });
     var qs= dueQs.length?dueQs:memo.questions;
     var allGraded=qs.every(function(q){return rs.graded[q.id];});
 
@@ -686,8 +914,9 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     card.appendChild(spiral(9));
     if(memo.tag) card.appendChild(el('span',{'class':'tm-chip tm-chip-center',text:memo.tag}));
     card.appendChild(el('h2',{'class':'tm-recall-title',text:memo.title}));
+    var memoSteps = memo.structure ? memo.structure.split(/\s*(?:→|->|＞|>)\s*/).filter(Boolean) : [];
     if(memo.structure){
-      var steps=memo.structure.split(/\s*(?:→|->|＞|>)\s*/).filter(Boolean);
+      var steps=memoSteps;
       var stWrap=el('div',{'class':'tm-structure'});
       stWrap.appendChild(el('div',{'class':'tm-structure-label',text:'論点構造'}));
       var stLine=el('div',{'class':'tm-structure-steps'});
@@ -718,19 +947,141 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       function remaining(){ var n=0; blankIdx.forEach(function(ti){ if(!rs.cloze[q.id+':'+ti]) n++; }); return n; }
 
       if(mode==='closed'){
+        var composeWrap=el('div',{'class':'tm-compose'});
+        composeWrap.appendChild(el('div',{'class':'tm-compose-label',text:'✍️ 自分の言葉で書いてみる（任意・キーワードを自動採点）'}));
+        var ta=el('textarea',{'class':'tm-textarea tm-compose-area',rows:'4',placeholder:'構造に沿って、自分の言葉で論証を組み立てて書く…',value:rs.draft[q.id]||''});
+        ta.addEventListener('input',function(){ rs.draft[q.id]=ta.value; });
+        composeWrap.appendChild(ta);
+        if(q.draft){
+          if(rs.showPrev[q.id]){
+            composeWrap.appendChild(el('div',{'class':'tm-prev-draft'},[
+              el('div',{'class':'tm-prev-label',text:'前回（'+fmtJP(q.draftDate)+'）の自分の答案'}),
+              el('div',{'class':'tm-prev-body',text:q.draft})
+            ]));
+          } else {
+            composeWrap.appendChild(el('button',{'class':'tm-prev-btn',onclick:function(){ rs.showPrev[q.id]=true; renderRecall(true); },text:'前回の自分の答案を見る'}));
+          }
+        }
+        qb.appendChild(composeWrap);
         var btns=el('div',{'class':'tm-mode-btns'});
         if(blankIdx.length>0){
-          btns.appendChild(el('button',{'class':'tm-reveal tm-reveal-kw',onclick:function(){ rs.mode[q.id]='keywords'; renderRecall(true); },text:'キーワードだけ見る'}));
+          btns.appendChild(el('button',{'class':'tm-reveal tm-reveal-kw',onclick:function(){ rs.mode[q.id]='keywords'; if(rs.draft[q.id]) saveDraft(memo.id,q.id,rs.draft[q.id]); renderRecall(true); },text:'キーワードだけ見る'}));
         }
-        btns.appendChild(el('button',{'class':'tm-reveal',onclick:function(){ rs.mode[q.id]='full'; renderRecall(true); },text:'答え全文を開く'}));
+        btns.appendChild(el('button',{'class':'tm-reveal',onclick:function(){ rs.mode[q.id]='full'; if(rs.draft[q.id]) saveDraft(memo.id,q.id,rs.draft[q.id]); renderRecall(true); },text:'答え全文を開く'}));
         qb.appendChild(btns);
+        var trainBtns=el('div',{'class':'tm-mode-btns'});
+        if(memoSteps.length>=2){
+          trainBtns.appendChild(el('button',{'class':'tm-train-btn',onclick:function(){ rs.mode[q.id]='step'; rs.step[q.id]=0; renderRecall(true); },text:'🪜 ステップ想起'}));
+        }
+        if(blankIdx.length>=3){
+          trainBtns.appendChild(el('button',{'class':'tm-train-btn',onclick:function(){
+            rs.mode[q.id]='order';
+            rs.order[q.id]={ pool:shuffleIdx(blankIdx), placed:[], wrong:null };
+            renderRecall(true);
+          },text:'🔀 並べ替え'}));
+        }
+        if(trainBtns.childNodes.length) qb.appendChild(trainBtns);
+      } else if(mode==='step'){
+        var si2 = rs.step[q.id]||0;
+        var totalSteps = memoSteps.length;
+        var stepBox=el('div',{'class':'tm-step-box'});
+        stepBox.appendChild(el('div',{'class':'tm-step-head'},[
+          el('span',{'class':'tm-step-count',text:'ステップ '+(Math.min(si2+1,totalSteps))+' / '+totalSteps}),
+          el('span',{'class':'tm-step-hint',text:'この段階だけを書く'})
+        ]));
+        // 済んだ段階
+        memoSteps.forEach(function(sname,k){
+          if(k<si2){
+            var doneTxt=(rs.stepDraft[q.id]&&rs.stepDraft[q.id][k])||'';
+            stepBox.appendChild(el('div',{'class':'tm-step-done'},[
+              el('span',{'class':'tm-step-badge done',text:sname}),
+              doneTxt?el('div',{'class':'tm-step-text',text:doneTxt}):null
+            ]));
+          }
+        });
+        if(si2<totalSteps){
+          stepBox.appendChild(el('div',{'class':'tm-step-current'},[
+            el('span',{'class':'tm-step-badge now',text:memoSteps[si2]}),
+            el('span',{'class':'tm-step-ask',text:'…は？'})
+          ]));
+          var sta=el('textarea',{'class':'tm-textarea tm-compose-area',rows:'3',placeholder:'この段階の一文を書く…',value:(rs.stepDraft[q.id]&&rs.stepDraft[q.id][si2])||''});
+          sta.addEventListener('input',function(){
+            rs.stepDraft[q.id]=rs.stepDraft[q.id]||{};
+            rs.stepDraft[q.id][si2]=sta.value;
+          });
+          stepBox.appendChild(sta);
+          qb.appendChild(stepBox);
+          var stBtns=el('div',{'class':'tm-mode-btns'});
+          stBtns.appendChild(el('button',{'class':'tm-reveal tm-reveal-kw',onclick:function(){
+            rs.step[q.id]=si2+1;
+            if(si2+1>=totalSteps){
+              // 全段階の記述を1つの答案として採点へ
+              var joined=[];
+              for(var z=0;z<totalSteps;z++){ var v=(rs.stepDraft[q.id]||{})[z]; if(v) joined.push(v); }
+              if(joined.length){ rs.draft[q.id]=joined.join('\n'); saveDraft(memo.id,q.id,rs.draft[q.id]); }
+              rs.mode[q.id]='keywords';
+            }
+            renderRecall(true);
+          },text: (si2+1>=totalSteps)?'書き終えて採点する →':'次の段階へ →'}));
+          stBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ rs.mode[q.id]='full'; renderRecall(true); },text:'答えを見る'}));
+          qb.appendChild(stBtns);
+        }
+      } else if(mode==='order'){
+        var od=rs.order[q.id];
+        var orderBox=el('div',{'class':'tm-order-box'});
+        orderBox.appendChild(el('div',{'class':'tm-kw-label',text:'論理の順にキーワードをタップ'}));
+        var slot=el('div',{'class':'tm-order-slots'});
+        if(od.placed.length===0) slot.appendChild(el('span',{'class':'tm-order-empty',text:'ここに順番が並びます'}));
+        od.placed.forEach(function(ti,pi){
+          if(pi>0) slot.appendChild(el('span',{'class':'tm-structure-arrow',text:'→'}));
+          slot.appendChild(el('span',{'class':'tm-order-chip placed',text:tokens[ti].value}));
+        });
+        orderBox.appendChild(slot);
+        if(od.wrong!=null){
+          orderBox.appendChild(el('div',{'class':'tm-order-msg err',text:'そこではありません。正しくは「'+tokens[blankIdx[od.placed.length]].value+'」が次です。'}));
+        }
+        var done = od.placed.length===blankIdx.length;
+        if(done){
+          orderBox.appendChild(el('div',{'class':'tm-order-msg ok',text:'✓ 論理の順に並べられました。この流れで書けば通ります。'}));
+        } else {
+          var pool=el('div',{'class':'tm-order-pool'});
+          od.pool.forEach(function(ti){
+            if(od.placed.indexOf(ti)>=0) return;
+            pool.appendChild(el('button',{'class':'tm-order-chip',onclick:function(){
+              var expect=blankIdx[od.placed.length];
+              if(ti===expect){ od.placed.push(ti); od.wrong=null; }
+              else { od.wrong=ti; }
+              renderRecall(true);
+            },text:tokens[ti].value}));
+          });
+          orderBox.appendChild(pool);
+        }
+        qb.appendChild(orderBox);
+        var odBtns=el('div',{'class':'tm-mode-btns'});
+        if(!done) odBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ od.placed=blankIdx.slice(); od.wrong=null; renderRecall(true); },text:'答えの順を見る'}));
+        odBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ rs.mode[q.id]='full'; renderRecall(true); },text:'答え全文と照合'}));
+        qb.appendChild(odBtns);
       } else if(mode==='keywords'){
         var kwBox=el('div',{'class':'tm-kw-box'});
-        kwBox.appendChild(el('div',{'class':'tm-kw-label',text:'このキーワードを繋いで、自分の言葉で組み立てる'}));
+        var myDraft=rs.draft[q.id]||'';
+        var scored=!!myDraft.trim();
+        if(scored){
+          var hits=0;
+          blankIdx.forEach(function(ti){ if(kwHit(myDraft,tokens[ti].value)) hits++; });
+          var pct=blankIdx.length?Math.round(hits/blankIdx.length*100):0;
+          kwBox.appendChild(el('div',{'class':'tm-score'+(pct>=80?' s-good':(pct>=50?' s-mid':' s-low'))},[
+            el('strong',{text:hits+' / '+blankIdx.length}),
+            el('span',{text:' 個のキーワードを使えました（'+pct+'%）'})
+          ]));
+          blankIdx.forEach(function(ti){ if(kwHit(myDraft,tokens[ti].value)) rs.cloze[q.id+':'+ti]=true; });
+        }
+        kwBox.appendChild(el('div',{'class':'tm-kw-label',text: scored?'✓＝書けた語／⬚＝抜けた語（タップで確認）':'このキーワードを繋いで、自分の言葉で組み立てる'}));
         var list=el('ol',{'class':'tm-kw-list'});
         blankIdx.forEach(function(ti){
           var li=el('li');
-          if(rs.cloze[q.id+':'+ti]){ li.appendChild(el('strong',{'class':'tm-cloze-on',text:tokens[ti].value})); }
+          var wasHit = scored && kwHit(rs.draft[q.id]||'',tokens[ti].value);
+          if(scored) li.appendChild(el('span',{'class':'tm-kw-mark'+(wasHit?' hit':' miss'),text: wasHit?'✓':'✕'}));
+          if(rs.cloze[q.id+':'+ti]){ li.appendChild(el('strong',{'class':'tm-cloze-on'+(scored&&!wasHit?' tm-miss':''),text:tokens[ti].value})); }
           else {
             var len2=Math.min(Math.max(Array.from(tokens[ti].value).length,2),6);
             li.appendChild(el('button',{'class':'tm-cloze',onclick:(function(key){return function(){ rs.cloze[key]=true; renderRecall(true); };})(q.id+':'+ti),text:Array(len2+1).join('⬚')}));
@@ -747,6 +1098,14 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
         kwBtns.appendChild(el('button',{'class':'tm-reveal-keys',onclick:function(){ rs.mode[q.id]='full'; renderRecall(true); },text:'答え全文と照合'}));
         qb.appendChild(kwBtns);
       } else {
+        var myD=rs.draft[q.id]||'';
+        if(myD.trim()){
+          qb.appendChild(el('div',{'class':'tm-mydraft'},[
+            el('div',{'class':'tm-prev-label',text:'自分の答案'}),
+            el('div',{'class':'tm-prev-body',text:myD})
+          ]));
+          qb.appendChild(el('div',{'class':'tm-kw-label',text:'↓ 模範の論証と見比べる（色つきがキーワード）'}));
+        }
         var ans=el('div',{'class':'tm-recall-answer'});
         tokens.forEach(function(t,ti){
           if(t.type==='text'){ ans.appendChild(document.createTextNode(t.value)); return; }
@@ -769,19 +1128,23 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
         }
       }
 
-      if(mode!=='closed'){
+      if(mode!=='closed' && mode!=='step' && mode!=='order'){
         if(!g){
           qb.appendChild(el('div',{'class':'tm-qgrade'},[
             el('span',{'class':'tm-qgrade-label',text:'この問いは？'}),
-            el('div',{'class':'tm-qgrade-btns'},[
-              gradeBtn(memo,q,'fail','✕ 思い出せず'),
-              gradeBtn(memo,q,'vague','△ あいまい'),
-              gradeBtn(memo,q,'good','○ バッチリ')
+            el('div',{'class':'tm-qgrade-btns tm-g4'},[
+              gradeBtn(memo,q,'fail','✕ ダメ'),
+              gradeBtn(memo,q,'vague','△ 苦しい'),
+              gradeBtn(memo,q,'good','○ できた'),
+              gradeBtn(memo,q,'easy','◎ 余裕')
             ])
           ]));
         } else {
-          var label = g==='good'?'○ バッチリ → 間隔を延長':(g==='vague'?'△ あいまい → 明日また':'✕ 思い出せず → 当日中に再出題');
-          qb.appendChild(el('div',{'class':'tm-qresult r-'+g,text:label}));
+          var qNow=null;
+          DATA.memos.forEach(function(mm){ if(mm.id===memo.id) mm.questions.forEach(function(qq){ if(qq.id===q.id) qNow=qq; }); });
+          var ivTxt = qNow ? (qNow.interval>0 ? ('次は '+fmtJP(qNow.nextReview)+'（'+qNow.interval+'日後）') : '今日中にもう一度') : '';
+          var gl = g==='easy'?'◎ 余裕':(g==='good'?'○ できた':(g==='vague'?'△ 苦しい':'✕ ダメ'));
+          qb.appendChild(el('div',{'class':'tm-qresult r-'+g,text: gl+' → '+ivTxt}));
         }
       }
       qsWrap.appendChild(qb);
@@ -789,16 +1152,18 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     card.appendChild(qsWrap);
     wrap.appendChild(card);
     if(allGraded){
-      wrap.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){ rs.opened={}; rs.cloze={}; rs.graded={}; rs.mode={}; rs.idx+=1; renderRecall(); },text: (rs.idx+1<rs.memos.length)?'次の論点へ →':'想起を完了する ✓'}));
+      wrap.appendChild(el('button',{'class':'tm-btn-primary tm-mt',onclick:function(){ rs.opened={}; rs.cloze={}; rs.graded={}; rs.mode={}; rs.draft={}; rs.showPrev={}; rs.step={}; rs.stepDraft={}; rs.order={}; rs.idx+=1; renderRecall(); },text: (rs.idx+1<rs.memos.length)?'次の論点へ →':'想起を完了する ✓'}));
     }
     show(wrap,keepScroll);
   }
   function gradeBtn(memo,q,grade,label){
+    var iv=previewInterval(q,grade);
     return el('button',{'class':'tm-qg '+grade,onclick:function(){
+      if(rs.draft[q.id] && rs.draft[q.id].trim()) saveDraft(memo.id,q.id,rs.draft[q.id]);
       gradeQuestion(memo.id,q.id,grade); rs.graded[q.id]=grade; rs.totalDone+=1;
       var toks=parseTokens(q.a||''); toks.forEach(function(t,ti){ if(t.type==='blank') rs.cloze[q.id+':'+ti]=true; });
       renderRecall(true);
-    },text:label});
+    }},[ el('strong',{text:label}), el('span',{'class':'tm-qg-iv',text:iv}) ]);
   }
   function finish(title,desc,empty){
     var page=el('div',{'class':'tm-page tm-center-col'});
@@ -848,6 +1213,110 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
     if(inc.stats && (inc.stats.totalRecalls||0) > (DATA.stats.totalRecalls||0)) DATA.stats=inc.stats;
     return count;
   }
+  function renderStats(){
+    var page=el('div',{'class':'tm-page'});
+    page.appendChild(el('header',{'class':'tm-editor-head'},[
+      el('button',{'class':'tm-link',onclick:renderHome,text:'← ホーム'}),
+      el('span',{'class':'tm-editor-title',text:'学習統計'}),
+      el('span',{})
+    ]));
+
+    // 全問い収集
+    var allQ=[];
+    DATA.memos.forEach(function(m){ m.questions.forEach(function(q){ allQ.push(q); }); });
+    var st=DATA.stats;
+    var acc = st.totalRecalls>0 ? Math.round(st.totalGood/st.totalRecalls*100) : 0;
+
+    page.appendChild(el('div',{'class':'tm-stats'},[
+      stat('総問い数',allQ.length), stat('想起回数',st.totalRecalls), stat('成功率',acc+'%')
+    ]));
+
+    // ---- 定着度の内訳（安定度ベース）----
+    var buckets={ 'new':0, 'learning':0, 'young':0, 'mature':0 };
+    allQ.forEach(function(q){
+      var sb=q.stability||0;
+      if(!q.lastReview) buckets['new']++;
+      else if(sb<2) buckets['learning']++;
+      else if(sb<21) buckets['young']++;
+      else buckets['mature']++;
+    });
+    var total=Math.max(1,allQ.length);
+    var secA=el('div',{'class':'tm-backup-sec'});
+    secA.appendChild(el('h3',{text:'定着度の内訳'}));
+    secA.appendChild(el('p',{'class':'tm-bulk-desc',text:'安定度＝いま何日ぐらい記憶がもつか。21日以上もつ問いが「定着」です。'}));
+    var barRow=el('div',{'class':'tm-bar'});
+    [['new','未学習','#cfc6ad'],['learning','学習中','#8a8275'],['young','成長中','#b8893b'],['mature','定着','#b5402f']].forEach(function(b){
+      var w=buckets[b[0]]/total*100;
+      if(w>0) barRow.appendChild(el('div',{'class':'tm-bar-seg',style:'width:'+w+'%;background:'+b[2]}));
+    });
+    secA.appendChild(barRow);
+    var legend=el('div',{'class':'tm-legend'});
+    [['未学習','#cfc6ad',buckets['new']],['学習中','#8a8275',buckets['learning']],['成長中','#b8893b',buckets['young']],['定着','#b5402f',buckets['mature']]].forEach(function(l){
+      legend.appendChild(el('span',{'class':'tm-legend-item'},[
+        el('span',{'class':'tm-legend-dot',style:'background:'+l[1]}), el('span',{text:l[0]+' '+l[2]})
+      ]));
+    });
+    secA.appendChild(legend);
+    page.appendChild(secA);
+
+    // ---- 今後7日の予定 ----
+    var secB=el('div',{'class':'tm-backup-sec'});
+    secB.appendChild(el('h3',{text:'これからの復習予定'}));
+    var fc=[], maxFc=1;
+    for(var d=0; d<7; d++){
+      var day=addDays(todayStr(),d), n=0;
+      allQ.forEach(function(q){
+        var nr=q.nextReview||todayStr();
+        if(d===0 ? (nr<=day) : (nr===day)) n++;
+      });
+      fc.push({day:day,n:n}); if(n>maxFc) maxFc=n;
+    }
+    var chart=el('div',{'class':'tm-chart'});
+    fc.forEach(function(f,i){
+      var h=Math.round(f.n/maxFc*70);
+      chart.appendChild(el('div',{'class':'tm-chart-col'},[
+        el('div',{'class':'tm-chart-num',text:String(f.n)}),
+        el('div',{'class':'tm-chart-bar'+(i===0?' today':''),style:'height:'+Math.max(3,h)+'px'}),
+        el('div',{'class':'tm-chart-lab',text: i===0?'今日':fmtJP(f.day)})
+      ]));
+    });
+    secB.appendChild(chart);
+    page.appendChild(secB);
+
+    // ---- 直近7日の消化数 ----
+    var secC=el('div',{'class':'tm-backup-sec'});
+    secC.appendChild(el('h3',{text:'直近7日の想起数'}));
+    var hist=[], maxH=1;
+    for(var k=6;k>=0;k--){
+      var dd=addDays(todayStr(),-k); var v=(st.daily&&st.daily[dd])||0;
+      hist.push({day:dd,n:v}); if(v>maxH) maxH=v;
+    }
+    var chart2=el('div',{'class':'tm-chart'});
+    hist.forEach(function(f,i){
+      var h2=Math.round(f.n/maxH*70);
+      chart2.appendChild(el('div',{'class':'tm-chart-col'},[
+        el('div',{'class':'tm-chart-num',text:String(f.n)}),
+        el('div',{'class':'tm-chart-bar hist'+(i===6?' today':''),style:'height:'+Math.max(3,h2)+'px'}),
+        el('div',{'class':'tm-chart-lab',text: i===6?'今日':fmtJP(f.day)})
+      ]));
+    });
+    secC.appendChild(chart2);
+    page.appendChild(secC);
+
+    // ---- 苦手な問い ----
+    var weak=allQ.filter(function(q){ return (q.difficulty||0)>=7 || (q.history||[]).slice(0,3).filter(function(h){return h.grade==='fail';}).length>=2; });
+    if(weak.length){
+      var secD=el('div',{'class':'tm-backup-sec'});
+      secD.appendChild(el('h3',{text:'つまずいている問い'}));
+      secD.appendChild(el('p',{'class':'tm-bulk-desc',text:'ここは論証を分解するか、キーワードを減らすと通りやすくなります。'}));
+      var wl=el('ul',{'class':'tm-weak-list'});
+      weak.slice(0,8).forEach(function(q){ wl.appendChild(el('li',{text:q.q})); });
+      secD.appendChild(wl);
+      page.appendChild(secD);
+    }
+    show(page);
+  }
+
   function renderBackup(){
     var page=el('div',{'class':'tm-page'});
     page.appendChild(el('header',{'class':'tm-editor-head'},[
@@ -856,6 +1325,19 @@ html,body{margin:0;padding:0;background:#f0e8d6;}
       el('span',{})
     ]));
     page.appendChild(el('div',{'class':'tm-hint-box',text:'iPhoneは端末の都合でアプリの保存データが消えることがあります。論点が増えたら、ときどき書き出して安全な場所（メモ・メール・クラウド）に保管してください。'}));
+
+    var setSec=el('div',{'class':'tm-backup-sec'});
+    setSec.appendChild(el('h3',{text:'1日の復習上限'}));
+    setSec.appendChild(el('p',{'class':'tm-bulk-desc',text:'溜まりすぎて挫折しないための上限です。超えた分は期限の古い順に翌日へ回します。'}));
+    var limWrap=el('div',{'class':'tm-limit-row'});
+    [20,40,60,100].forEach(function(v){
+      var cur=((DATA.settings&&DATA.settings.dailyLimit)||40)===v;
+      limWrap.appendChild(el('button',{'class':'tm-limit-btn'+(cur?' on':''),onclick:function(){
+        DATA.settings=DATA.settings||{}; DATA.settings.dailyLimit=v; save(); renderBackup();
+      },text:v+'問'}));
+    });
+    setSec.appendChild(limWrap);
+    page.appendChild(setSec);
 
     var json=JSON.stringify(DATA,null,2);
     var exp=el('div',{'class':'tm-backup-sec'});
